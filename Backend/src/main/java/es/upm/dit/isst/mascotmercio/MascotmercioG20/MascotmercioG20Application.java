@@ -11,3 +11,12 @@ public class MascotmercioG20Application {
 	}
 
 }
+
+@SpringBootApplication
+public class MascotmercioG20Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MascotmercioG20Application.class, args);
+	}
+
+}
