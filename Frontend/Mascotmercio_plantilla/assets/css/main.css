@@ -55,6 +55,19 @@ img.pull-left { margin-right: 10px; }
 #social { margin-top:50px; margin-bottom:50px; }
 	#social .wrapper { width:340px; margin:0 auto; }
 
+
+.boton {
+	display: inline-block;
+	background-color: #000;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 50px; /* Hace que el botón sea redondo */
+	text-decoration: none;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	}
+	
 /* Main content block */
 .maincontent { }
 
