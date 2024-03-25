@@ -1,0 +1,49 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos de la barra de navegación */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 30px; /* Ajusta la altura según tu logo */
+    width: auto;
+    margin-right: 10px;
+}
+
+.navbar-btns {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-btns li {
+    margin-right: 10px;
+}
+
+.navbar-btns li:last-child {
+    margin-right: 0;
+}
+
+.navbar-btns li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-btns li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
