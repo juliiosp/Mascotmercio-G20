@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; /* Altura fija para el contenedor */
+  }
+  
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.352);
+    width: 300px; /* Ancho fijo para las tarjetas */
+    height: 350px; /* Altura fija para las tarjetas */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-image {
+    width: 300px;
+    height: 200px; /* Ajusta la altura automáticamente */
+    border-radius: 10px 10px 10px 10px; /* Borde redondeado solo en la parte superior */
+  }
+  
+  .text {
+    margin-top: 10px; /* Empuja el texto hacia abajo, alineándolo en la parte inferior de la tarjeta */
+  }
+  

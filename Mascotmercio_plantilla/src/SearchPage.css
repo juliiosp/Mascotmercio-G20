@@ -1,0 +1,52 @@
+.unproducto {
+    padding: 10px;
+}
+
+#productosresultados {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    text-align: center;
+}
+
+#pagina_resultados {
+    list-style-type: none;
+    padding: 5px;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#lista {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#búsqueda {
+    border: 1px solid lightblue;
+    width: 250px;
+}
+
+#filtro {
+    border: 1px solid lightblue;
+}
+
+#buscador {
+    border: 1px solid;
+    border-radius: 5px;
+    width: 70px;
+    height: 30px;
+    background-color: #0d6efd;
+    color: white;
+}
+
+#filtrar {
+    border: 1px solid lightblue;
+    width: 250px;
+}
