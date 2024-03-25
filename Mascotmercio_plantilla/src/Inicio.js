@@ -1,4 +1,6 @@
 import React from 'react';
+import BotonesInicio from './BotonesInicio';
+import Tarjetas from './Tarjetas';
 
 const Inicio = () => {
   const gradientStyle = {
@@ -15,13 +17,17 @@ const Inicio = () => {
   };
 
   return (
-    <div style={gradientStyle}>
-      <div style={textStyle}>
-        <h1>Mascotmercio</h1>
-        <h3>Pet-Friendly</h3>
-        <p>La app que une a los amantes de las mascotas</p>
+    <>
+      <div style={gradientStyle}>
+        <div style={textStyle}>
+          <h1>Mascotmercio</h1>
+          <h3>Pet-Friendly</h3>
+          <p>La app que une a los amantes de las mascotas</p>
+        </div>
       </div>
-    </div>
+      <BotonesInicio />
+      <Tarjetas />
+    </>
   );
 };
 

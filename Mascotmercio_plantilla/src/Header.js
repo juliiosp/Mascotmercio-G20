@@ -8,13 +8,13 @@ const NavigationBar = () => {
       <nav>
         <ul>
           <li>
-            <a href="/" className="nav-link">Home</a>
+            <a href="/" className="nav-link">Inicio</a>
           </li>
           <li>
-            <a href="/about" className="nav-link">About</a>
+            <a href="/acerca" className="nav-link">Acerca de</a>
           </li>
           <li>
-            <a href="/contact" className="nav-link">Contact</a>
+            <a href="/contacto" className="nav-link">Contacto</a>
           </li>
         </ul>
       </nav>

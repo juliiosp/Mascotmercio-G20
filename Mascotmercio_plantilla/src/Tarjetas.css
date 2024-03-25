@@ -3,6 +3,9 @@
     justify-content: center;
     align-items: center;
     height: 400px; /* Altura fija para el contenedor */
+    flex-direction: row;
+    justify-content: space-around; /* Alinea las tarjetas horizontalmente con espacio entre ellas */
+
   }
   
   .card {
