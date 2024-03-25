@@ -2,9 +2,9 @@
 /* #head { background:#181015 url( ../images/bg_header.jpg) no-repeat; background-size: cover; min-height:520px; text-align: center; padding-top:240px; color:white; font-family:"Open sans", Helvetica, Arial; font-weight:300; } */
 #head { background: linear-gradient(to right, #93FAF6, #FFB1FF); background-size: cover; min-height: 520px; text-align: center; padding-top: 240px; color: white; font-family: "Open sans", Helvetica, Arial; font-weight: 300; } 
 #head.secondary { height:100px; min-height: 100px; padding-top:0px; }
-	#head .lead { font-family:"Open sans", Helvetica, Arial; font-size:44px; margin-bottom:6px; color:rgb(0, 0, 0); line-height:1.15em; font-weight: bold; } 
-	#head .lead1 { font-family:"Open sans", Helvetica, Arial; font-size:44px; margin-bottom:6px; color:rgb(0, 0, 0); line-height:1.15em; } 
-	#head .tagline { color:rgba(0, 0, 0, 1); margin-bottom:25px; }
+	#head .lead { font-family:"Open sans", Helvetica, Arial; font-size:80px; margin-bottom:6px; color:rgb(0, 0, 0); line-height:1.15em; font-weight: bold; } 
+	#head .lead1 { font-family:"Open sans", Helvetica, Arial; font-size:40px; margin-bottom:6px; color:rgb(0, 0, 0); line-height:1.15em; } 
+	#head .tagline { font-family:"Open sans", Helvetica, Arial; font-size:30px; color:rgba(0, 0, 0, 1); margin-bottom:25px; }
 		#head .tagline a { color:#000000; } 
 	#head .btn { margin-bottom:10px;}
 	#head .btn-default { text-shadow: none; background:transparent; color:rgba(255,255,255,.5); -webkit-box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); -moz-box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,.5); background: transparent; }
@@ -60,13 +60,14 @@ img.pull-left { margin-right: 10px; }
 	display: inline-block;
 	background-color: #000;
 	color: #fff;
-	padding: 10px 20px;
+	padding: 20px 30px; /* Aumentamos el tamaño del padding */
 	border-radius: 50px; /* Hace que el botón sea redondo */
 	text-decoration: none;
-	font-size: 16px;
+	font-size: 15px; /* Aumentamos el tamaño de la fuente */
 	border: none;
 	cursor: pointer;
-	}
+}
+
 	
 /* Main content block */
 .maincontent { }
