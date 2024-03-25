@@ -16,7 +16,7 @@ body {
 }
 
 .navbar-logo img {
-    height: 30px; /* Ajusta la altura según tu logo */
+    height: 80px; /* Ajusta la altura según tu logo */
     width: auto;
     margin-right: 10px;
 }
@@ -47,3 +47,56 @@ body {
 .navbar-btns li a:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
+
+.container-botones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos de los botones */
+.boton {
+	display: inline-block;
+	background-color: #000;
+	color: #fff;
+	padding: 20px 30px; /* Aumentamos el tamaño del padding */
+	border-radius: 50px; /* Hace que el botón sea redondo */
+	text-decoration: none;
+	font-size: 20px; /* Aumentamos el tamaño de la fuente */
+	border: none;
+	cursor: pointer;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+    margin: 0 10px; /* Agrega margen horizontal entre los botones */
+
+}
+
+.contenedor-tarjetas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos de las tarjetas */
+.tarjeta {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Para que las tarjetas se expandan igualmente */
+    margin: 0 20px; /* Espacio entre las tarjetas */
+    max-width: 300px; /* Ancho máximo de cada tarjeta */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: inline-block; /* Cambia la visualización a en línea */
+
+}
+
+.tarjeta img {
+    width: 400px; /* Ancho deseado para todas las imágenes */
+    height: 200px; /* Altura automática para mantener las proporciones originales */
+    display: block; /* Evitar espacios adicionales debajo de las imágenes */
+    }
+
