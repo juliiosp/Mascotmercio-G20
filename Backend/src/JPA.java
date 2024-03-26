@@ -1,37 +1,11 @@
 @Entity
 @Table
 
-//¡¡NO ES FINAL!!, queda por cuadrar cosas para la proxima reunion
-
 import javax.persistence.*;
 import java.util.Date;
 
-// public class Dueño_Mascota {
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
-
-//     @Column(name="nombre")
-//     private String nombre;
-
-//     @Column(name="telefono")
-//     private Int telefono;
-
-//     @Column(name="mail")
-//     private String mail;
-
-//     @Column(name="contraseña")
-//     private String contraseña;
-
-//     @OneToMany(mappedBy = "dueño_mascota")
-//     private List<Valoraciones> valoraciones;
-
-//     @OneToMany(mappedBy = "dueño_mascota")
-//     private List<Reserva> reserva;
-// }
-
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "dueños_mascotas")
+public class Dueño_Mascota{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -51,16 +25,48 @@ public class Usuario {
     @Column(name="contraseña")
     private String contraseña;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "dueño_mascota")
     private List<Valoracion> valoraciones;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "dueño_mascota")
     private List<Reserva> reservas;
 
     @Repository
-    public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+    public interface Dueno_MascotaRepository extends JpaRepository<Dueno_Mascota, Integer> {
+
     }
 }
+
+@Table(name = "dueños_establecimientos")
+public class Dueño_Establecimiento{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name="nombre")
+    private String nombre;
+
+    @Column(name="telefono")
+    private Integer telefono;
+
+    @Column(name="direccion")
+    private String direccion;
+
+    @Column(name="mail")
+    private String mail;
+
+    @Column(name="contraseña")
+    private String contraseña;
+
+    @OneToMany(mappedBy = "dueñoEstablecimiento")
+    private List<Establecimiento> establecimientos;
+
+    @Repository
+    public interface Dueno_EstablecimientoRepository extends JpaRepository<Dueno_Establecimiento, Integer> {
+      
+    }
+}
+
 
 @Table(name="establecimientos")
 public class Establecimiento{
@@ -79,6 +85,9 @@ public class Establecimiento{
 
     @Column(name="direccion")
     private String direccion;
+
+    @ManyToOne(mappedBy="dueño_establecimiento_id")
+    private Dueño_Establecimiento dueñoEstablecimiento;
 
     @OneToMany(mappedBy = "establecimiento")
     private List<Valoracion> valoraciones;
@@ -104,21 +113,21 @@ public class Valoracion{
     private String foto;
 
     @Column(name="calificacion")
-    private Integer calificacion
+    private Integer calificacion;
 
     @Column(name="fecha")
     private Date fecha;
 
     @ManyToOne
-    @JoinColumn(name="usuario_id")
-    private Usuario usuario;
+    @JoinColumn(name="dueno_mascota_id")
+    private Dueño_Mascota dueñoMascota;
 
     @ManyToOne
     @JoinColumn(name="establecimiento_id")
     private Establecimiento establecimiento;
     
     @Repository
-    public interface ValoracionesRepository extends JpaRepository<Establecimiento, Integer> {
+    public interface ValoracionesRepository extends JpaRepository<Valoracion, Integer> {
   }
 }
 
@@ -144,12 +153,15 @@ public class Actividad{
     @JoinColumn(name="establecimiento_id")
     private Establecimiento establecimiento;
 
-    @ManyToOne
-    @JoinColumn(name="actividad_id")
-    private Actividad actividad;
+    @OneToMany(mappedBy="actividad")
+    private List<Reserva> reservas;
+
+    // @ManyToOne
+    // @JoinColumn(name="actividad_id")
+    // private Actividad actividad;
 
     @Repository
-    public interface ActividadesRepository extends JpaRepository<Establecimiento, Integer> {    
+    public interface ActividadesRepository extends JpaRepository<Actividad, Integer> {    
 
     }
   }
@@ -170,21 +182,19 @@ public class Reserva{
     private Integer numero_de_mascotas;
 
     @ManyToOne
-    @JoinColumn(name="usuario_id")
-    private Usuario usuario;
+    @JoinColumn(name="dueño_mascotas_id")
+    private Dueño_Mascota dueñoMascota;
+
+    // @ManyToOne
+    // @JoinColumn(name="establecimiento_id")
+    // private Establecimiento establecimiento;
 
     @ManyToOne
-    @JoinColumn(name="establecimiento_id")
-    private Establecimiento establecimiento;
-
-    @OneToMany
     private Actividad actividades;
 
     @Repository
-    public interface ReservasRepository extends JpaRepository<Reservas, Long> {
+    public interface ReservasRepository extends JpaRepository<Reserva, Integer> {
 
     }
-
-
 }
 
