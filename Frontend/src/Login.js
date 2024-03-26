@@ -24,7 +24,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="button">Iniciar Sesión</button>
+        <button className="iniciar" type="button">Iniciar Sesión</button>
       </form>
     </div>
   );

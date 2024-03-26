@@ -48,7 +48,7 @@ const Registro = () => {
             required
           />
         </div>
-        <button type="button">Registrarse</button>
+        <button className="registrar" type="button">Registrarse</button>
       </form>
     </div>
   );
