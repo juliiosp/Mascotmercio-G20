@@ -31,7 +31,7 @@ const BotonesInicio = () => {
                 <Link to="/login">
                     <button style={buttonStyle}>Dueño de mascota</button>
                 </Link>
-                <Link>
+                <Link to="login">
                     <button style={buttonStyle}>Propietario de establecimiento</button>
                 </Link>
             </div>

@@ -1,32 +1,46 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px; /* Altura fija para el contenedor */
-    flex-direction: row;
-    justify-content: space-around; /* Alinea las tarjetas horizontalmente con espacio entre ellas */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 20px auto;
+  width: 80%;
+}
 
-  }
-  
-  .card {
-    background-color: #fff;
-    padding: 20px;
-    margin: 0 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.352);
-    width: 300px; /* Ancho fijo para las tarjetas */
-    height: 350px; /* Altura fija para las tarjetas */
-    display: flex;
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.card-image {
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.text {
+  margin-top: 10px;
+}
+
+strong {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .container {
     flex-direction: column;
   }
-  
-  .card-image {
-    width: 300px;
-    height: 200px; /* Ajusta la altura automáticamente */
-    border-radius: 10px 10px 10px 10px; /* Borde redondeado solo en la parte superior */
-  }
-  
-  .text {
-    margin-top: 10px; /* Empuja el texto hacia abajo, alineándolo en la parte inferior de la tarjeta */
-  }
-  
+}
