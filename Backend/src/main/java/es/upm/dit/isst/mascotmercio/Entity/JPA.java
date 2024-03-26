@@ -120,11 +120,11 @@ public class Valoracion{
     private Date fecha;
 
     @ManyToOne
-    @JoinColumn(name="dueno_mascota_id")
+    @JoinColumn(name="dueno_mascota_id", referencedColumnName="id")
     private Dueño_Mascota dueñoMascota;
 
     @ManyToOne
-    @JoinColumn(name="establecimiento_id")
+    @JoinColumn(name="establecimiento_id", referencedColumnName="id")
     private Establecimiento establecimiento;
     
     @Repository
@@ -183,7 +183,7 @@ public class Reserva{
     private Integer numero_de_mascotas;
 
     @ManyToOne
-    @JoinColumn(name="dueño_mascotas_id")
+    @JoinColumn(name="dueño_mascotas_id", referencedColumnName="id")
     private Dueño_Mascota dueñoMascota;
 
     // @ManyToOne
