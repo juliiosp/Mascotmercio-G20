@@ -86,7 +86,8 @@ public class Establecimiento{
     @Column(name="direccion")
     private String direccion;
 
-    @ManyToOne(mappedBy="dueño_establecimiento_id")
+    @ManyToOne
+    @JoinColumn(name="dueño_establecimiento_id")
     private Dueño_Establecimiento dueñoEstablecimiento;
 
     @OneToMany(mappedBy = "establecimiento")
