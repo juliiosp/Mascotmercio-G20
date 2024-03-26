@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <div className="container">
       <Link to="/registro" className="register-button">Registrarse</Link>
-      <h1>Iniciar Sesión</h1>
+      <h1>Inicia Sesión</h1>
       <form>
         <div className="form-group">
           <label htmlFor="email">Correo Electrónico:</label>

@@ -4,15 +4,31 @@ import './Registro.css'; // Importa los estilos CSS
 
 const Registro = () => {
   return (
-    <div className="container">
+    <div className="container-registro">
       <Link to="/login" className="login-link">Volver</Link>
-      <h1>Registrarse</h1>
+      <h1>Crea tu cuenta</h1>
       <form>
         <div className="form-group">
           <label htmlFor="name">Nombre:</label>
           <input
             type="text"
             id="name"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Dirección:</label>
+          <input
+            type="text"
+            id="direccion"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Telefono:</label>
+          <input
+            type="text"
+            id="telefono"
             required
           />
         </div>
