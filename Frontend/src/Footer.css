@@ -2,9 +2,6 @@
     background-color: #000;
     color: #fff;
     padding: 40px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    margin-top: 30px;
   }
   
   .footer-container {
@@ -12,12 +9,7 @@
     justify-content: space-between;
     align-items: flex-start;
   }
-  
-  .footer-logo img {
-    width: 200px;
-    height: 100px;
-  }
-  
+    
   .footer-column {
     margin-right: 30px;
   }

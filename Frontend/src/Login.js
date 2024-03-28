@@ -4,9 +4,9 @@ import './Login.css'; // Importa los estilos CSS
 
 const Login = () => {
   return (
-    <div className="container">
+    <div className="container" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
       <Link to="/registro" className="register-button">Registrarse</Link>
-      <h1>Iniciar Sesión</h1>
+      <h1>Inicia Sesión</h1>
       <form>
         <div className="form-group">
           <label htmlFor="email">Correo Electrónico:</label>
@@ -24,7 +24,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="button">Iniciar Sesión</button>
+        <button className="iniciar" type="button">Iniciar Sesión</button>
       </form>
     </div>
   );
