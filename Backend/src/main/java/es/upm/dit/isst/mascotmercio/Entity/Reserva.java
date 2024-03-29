@@ -10,9 +10,12 @@ public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    
+    @Column
     private Date fecha;
+    @Column
     private Integer numeroDePersonas;
+    @Column
     private Integer numeroDeMascotas;
 
     @ManyToOne

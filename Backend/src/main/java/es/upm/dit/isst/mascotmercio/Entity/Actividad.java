@@ -9,9 +9,13 @@ public class Actividad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column
     private String nombre;
+    @Column
     private String descripcion;
+    @Column
     private Date disponibilidad;
+    @Column
     private Integer precio;
 
     @ManyToOne

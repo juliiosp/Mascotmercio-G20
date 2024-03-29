@@ -9,9 +9,13 @@ public class Valoracion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column
     private String reseña;
+    @Column
     private String foto;
+    @Column
     private Integer calificacion;
+    @Column
     private Date fecha;
 
     @ManyToOne

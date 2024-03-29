@@ -9,9 +9,13 @@ public class Establecimiento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column
     private String nombre;
+    @Column
     private Integer telefono;
+    @Column
     private String mail;
+    @Column
     private String direccion;
 
     @ManyToOne
