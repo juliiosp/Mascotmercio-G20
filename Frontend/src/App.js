@@ -7,6 +7,7 @@ import Login from './Login';
 import Contacto from './Contacto';
 import Acerca from './Acerca';
 import VistaMapa from './Vista_Dueño_Mascota/VistaMapa';
+import VistaPrincipal from './Vista_Dueño_Establecimiento/VistaPrincipal';
 import { useState, useEffect } from "react";
 import NoMatch from "./NoMatch";
 import { Routes, Route } from "react-router-dom";
@@ -24,6 +25,8 @@ function App() {
 			  <Route path="/contacto" element={<Contacto />} />
 			  <Route path="/acerca" element={<Acerca />} />
 			  <Route path="/usuario" element={<VistaMapa />} />
+			  <Route path="/usuario2" element={<VistaPrincipal />} />
+			  <Route path="*" element={<NoMatch />} />
 			</Routes>
 		  </div>
 		  <Footer />
