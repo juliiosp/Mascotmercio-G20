@@ -9,20 +9,20 @@ import jakarta.persistence.Id;
 public class DuenoMascota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
+    private long id;
 
-        private String nombre;
-		private int telefono;
-		private String direccion;
-		private String email;
-		private String contraseña;
-        
-    public DuenoMascota(){
+    private String nombre;
+    private int telefono;
+    private String direccion;
+    private String email;
+    private String contraseña;
+
+    public DuenoMascota() {
 
     }
 
-    public DuenoMascota(Long id, String nombre, int telefono, String direccion, String email, String contraseña){
-        
+    public DuenoMascota(Long id, String nombre, int telefono, String direccion, String email, String contraseña) {
+
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -30,7 +30,7 @@ public class DuenoMascota {
         this.email = email;
         this.contraseña = contraseña;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
