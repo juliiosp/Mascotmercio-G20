@@ -1,4 +1,4 @@
-package es.upm.models;
+package es.upm.dit.isst.mascotmercio.MascotmercioG20.models;
 
 import java.sql.Date;
 
@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Valoraciones {
+public class Valoracion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -18,7 +18,7 @@ public class Valoraciones {
     private int calificacion;
     private Date fecha;
 
-    public Valoraciones(long id, String reseña, String foto, int calificacion, Date fecha) {
+    public Valoracion(long id, String reseña, String foto, int calificacion, Date fecha) {
         this.id = id;
         this.reseña = reseña;
         this.foto = foto;

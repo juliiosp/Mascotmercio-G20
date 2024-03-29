@@ -1,4 +1,4 @@
-package es.upm.models;
+package es.upm.dit.isst.mascotmercio.MascotmercioG20.models;
 
 import java.sql.Date;
 

@@ -1,4 +1,4 @@
-package es.upm.models;
+package es.upm.dit.isst.mascotmercio.MascotmercioG20.models;
 
 import java.sql.Date;
 
@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Actividades {
+public class Actividad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -18,7 +18,7 @@ public class Actividades {
     private Date disponibilidad;
     private int precio;
 
-    public Actividades(long id, String nombre, String descripcion, Date disponibilidad, int precio) {
+    public Actividad(long id, String nombre, String descripcion, Date disponibilidad, int precio) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
