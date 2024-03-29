@@ -3,7 +3,7 @@ import './Acerca.css'; // Importa los estilos CSS
 
 const Acerca = () => {
   return (
-    <div className="content">
+    <div className="content" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
       <section>
         <h2>Nuestra Historia</h2>
         <p>En un día soleado de primavera en Madrid, un grupo de amigos se reunió en un parque local. Mientras observaban a los niños jugando y riendo, una conversación casual llevó a un dato sorprendente: "En Madrid hay más perros que niños". Esta tendencia sociológica no solo era una estadística, sino una realidad palpable en las calles de la ciudad. La idea de que las mascotas estaban cada vez más integradas en la vida cotidiana de las familias madrileñas comenzó a resonar en las mentes de aquellos amigos. Se dieron cuenta de que las mascotas ya no eran solo animales domésticos, sino verdaderos miembros de la familia, compañeros de aventuras y fieles amigos.</p>

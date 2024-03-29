@@ -24,6 +24,7 @@ function App() {
 			  <Route path="/contacto" element={<Contacto />} />
 			  <Route path="/acerca" element={<Acerca />} />
 			  <Route path="/usuario" element={<VistaMapa />} />
+			  <Route path="*" element={<NoMatch />} />
 			</Routes>
 		  </div>
 		  <Footer />
