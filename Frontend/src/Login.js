@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'; // Importa los estilos CSS
-
+//Podemos poner el fondo en blanco y el menú mantenerlo en negro. 
 const Login = () => {
   return (
     <div className="container" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
