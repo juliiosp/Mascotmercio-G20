@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoMascota;
 
 @Repository
-public interface duenomascotaRepository extends CrudRepository<DuenoMascota, Long> {
+public interface DuenoMascotaRepository extends CrudRepository<DuenoMascota, Long> {
     DuenoMascota findByDuenoMascota(Long id);  
 }

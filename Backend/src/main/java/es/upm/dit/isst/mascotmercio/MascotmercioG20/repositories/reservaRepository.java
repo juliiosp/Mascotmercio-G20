@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Reserva;
 
 @Repository
-public interface reservaRepository extends CrudRepository<Reserva, Long> {
+public interface ReservaRepository extends CrudRepository<Reserva, Long> {
     Reserva findByReserva(Long id);
 }

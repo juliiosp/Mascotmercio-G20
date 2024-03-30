@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Actividad;
 
 @Repository
-public interface actividadRepository extends CrudRepository<Actividad, Long>{
+public interface ActividadRepository extends CrudRepository<Actividad, Long>{
     Actividad findByActividad(Long id);
 }
