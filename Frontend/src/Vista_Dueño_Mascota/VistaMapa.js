@@ -1,61 +1,100 @@
-import React, { useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './VistaMapa.css';
 
 const VistaMapa = () => {
-  const [lugarSeleccionado, setLugarSeleccionado] = useState(null);
+  const mapRef = useRef(null); // Referencia al elemento del mapa
+  const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState(null);
 
-  // Función para manejar el clic en el mapa
-  const handleClickMapa = (event) => {
-    // Obtener las coordenadas del lugar clicado
-    const lat = event.latLng.lat();
-    const lng = event.latLng.lng();
-
-    // Realizar una solicitud a una API para obtener los detalles del lugar según las coordenadas
-    obtenerInformacionLugar(lat, lng)
-      .then((informacionLugar) => {
-        // Actualizar el estado con la información del lugar seleccionado
-        setLugarSeleccionado(informacionLugar);
-      })
-      .catch((error) => {
-        console.error('Error al obtener la información del lugar:', error);
+  useEffect(() => {
+    // Función para cargar el mapa
+    const loadMap = () => {
+      const google = window.google; // Obtener la referencia a la API de Google Maps
+      const map = new google.maps.Map(mapRef.current, {
+        center: { lat: 40.416775, lng: -3.70379 }, // Coordenadas del centro del mapa (Madrid)
+        zoom: 12, // Zoom inicial del mapa
       });
-  };
 
-  // Función simulada para obtener la información del lugar desde una API (reemplazar con una solicitud real)
-  const obtenerInformacionLugar = async (lat, lng) => {
-    // Aquí puedes realizar una solicitud a una API real para obtener los detalles del lugar según las coordenadas
-    // En este ejemplo, simplemente se devuelve la información estática de un lugar ficticio
-    return {
-      nombre: 'Lugar Ejemplo',
-      descripcion: 'Descripción de Lugar Ejemplo.',
-      direccion: 'Dirección de Lugar Ejemplo.',
+      // Array de ubicaciones con sus coordenadas y detalles
+      const locations = [
+        { lat: 40.4203, lng: -3.7058, title: 'Ubicación 1', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
+        { lat: 40.4203, lng: -3.6058, title: 'Ubicación 3', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
+        { lat: 40.5203, lng: -3.7058, title: 'Ubicación 4', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
+        { lat: 40.6203, lng: -3.71058, title: 'Ubicación 45', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
+        { lat: 40.4203, lng: -3.721058, title: 'Ubicación 54', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
+
+      ];
+
+      // Añadir marcadores para cada ubicación
+      locations.forEach((location) => {
+        const marker = new google.maps.Marker({
+          position: { lat: location.lat, lng: location.lng },
+          map: map,
+          title: location.title,
+        });
+
+        // Agregar un evento de clic al marcador
+        marker.addListener('click', () => {
+          // Actualizar el estado con la información de la ubicación seleccionada
+          setUbicacionSeleccionada(location);
+        });
+      });
     };
-  };
+
+    // Verificar si la API de Google Maps está disponible
+    if (window.google) {
+      loadMap();
+    } else {
+      // Si no está disponible, cargar la API de Google Maps de forma asíncrona
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-2N2iclyLmO1o3q4H_rqfi0LuVqjhMj0&callback=initMap`;
+      script.defer = true;
+      script.async = true;
+      window.initMap = loadMap; // Función de devolución de llamada para cargar el mapa una vez que se cargue la API
+      document.head.appendChild(script);
+    }
+  }, []); // Se ejecuta solo una vez al montar el componente
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-      <div style={{ width: '50%', padding: '20px' }}>
-        {lugarSeleccionado && (
-          <>
-            <h2>Lugar: {lugarSeleccionado.nombre}</h2>
-            <p>Descripción: {lugarSeleccionado.descripcion}</p>
-            <p>Dirección: {lugarSeleccionado.direccion}</p>
-          </>
-        )}
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+      <div className="button-container">
+        <Link to="/">
+          <button className="round-button">LogOut</button>
+        </Link>
+        <Link to="/">
+          <button className="round-button">Reservar</button>
+        </Link>
+        </div>
+        <div style={{ width: '35%', padding: '20px' }}>
+          {ubicacionSeleccionada && (
+            <div className="table-container">
+              <table className="custom-table-mapa">
+                <tbody>
+                  <tr>
+                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
+                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.title}</td>
+                  </tr>
+                  <tr>
+                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Teléfono</td>
+                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.telefono}</td>
+                  </tr>
+                  <tr>
+                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Dirección</td>
+                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.direccion}</td>
+                  </tr>
+                  <tr>
+                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
+                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.correo}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+        <div style={{ width: '50%', marginTop: '100px' }}>
+          <div ref={mapRef} style={{ width: '100%', height: '450px' }}></div>
+        </div>
       </div>
-      <div style={{ width: '35%', marginTop: '100px' }}>
-        <iframe  
-          title="Google Maps"
-          width="100%"
-          height="450"
-          style={{ border: 0 }}
-          loading="lazy"
-          allowFullScreen
-          referrerPolicy="no-referrer-when-downgrade"
-          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdp6FsA21FrpIp1lH5mNpNSYsM9hOs4rg&q=Space+Needle,Seattle+WA`}
-          onClick={handleClickMapa}
-        ></iframe>
-      </div>
-    </div>
   );
 };
 

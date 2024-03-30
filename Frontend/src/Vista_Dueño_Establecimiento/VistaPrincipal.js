@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './VistaPrincipal.css'; // Asegúrate de tener un archivo CSS llamado Table.css en el mismo directorio que este componente
 
 function FourByTwoTable() {

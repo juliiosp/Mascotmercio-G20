@@ -1,12 +1,12 @@
 /* register.css */
 
-.container {
+.container-registro {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 800px;
+    height: 1000px;
   }
   
   .login-link {
