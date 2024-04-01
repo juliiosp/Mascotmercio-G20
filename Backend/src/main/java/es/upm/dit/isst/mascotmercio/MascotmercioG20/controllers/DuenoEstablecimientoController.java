@@ -1,14 +1,12 @@
 package es.upm.dit.isst.mascotmercio.MascotmercioG20.controllers;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoEstablecimiento;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoMascota;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.DuenoEstablecimientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,8 +18,9 @@ public class DuenoEstablecimientoController {
 
     // Obtener todos los dueños de establecimientos
     @GetMapping
-    public List<DuenoEstablecimiento> getAllOwners() {
-        return (List<DuenoEstablecimiento>) duenoEstablecimientoRepository.findAll();
+    public ResponseEntity<Iterable<DuenoEstablecimiento>> getAllOwners(){
+        Iterable<DuenoEstablecimiento> duenos = duenoEstablecimientoRepository.findAll();
+        return new ResponseEntity<>(duenos, HttpStatus.OK);
     }
 
     // Obtener dueño por ID
