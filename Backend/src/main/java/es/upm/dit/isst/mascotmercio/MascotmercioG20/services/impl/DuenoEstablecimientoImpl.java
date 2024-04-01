@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoEstablecimiento;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoMascota;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.DuenoEstablecimientoRepository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.services.DuenoEstablecimientoService;
 
@@ -25,7 +24,7 @@ public class DuenoEstablecimientoImpl implements DuenoEstablecimientoService{
     }
 
     @Override
-    public DuenoEstablecimiento createDuenoEstablecimientod(DuenoEstablecimiento duenoEstablecimiento) {
+    public DuenoEstablecimiento createDuenoEstablecimiento(DuenoEstablecimiento duenoEstablecimiento) {
         return duenoEstablecimientoRepository.save(duenoEstablecimiento);
     }
 
