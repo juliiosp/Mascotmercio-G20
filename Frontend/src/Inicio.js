@@ -22,7 +22,7 @@ const Inicio = () => {
         <div style={textStyle}>
           <h1>Mascotmercio</h1>
           <h3>Pet-Friendly</h3>
-          <p>La app que une a los amantes de las mascotas</p>
+          <p style={{ textAlign: 'center', margin: '0', fontSize:30 }}>¡Encuentra el lugar perfecto para ti y tu mascota!</p>
         </div>
       </div>
       <BotonesInicio />

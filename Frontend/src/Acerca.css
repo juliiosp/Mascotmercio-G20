@@ -1,28 +1,50 @@
 .content {
-    padding: 20px;
-  }
+  padding: 20px;
+  height: 1000px;
+}
+
+section {
+  margin-bottom: 40px;
+  background-color: white;
+  border-radius: 10px; /* Ajusta el radio de los bordes segÃºn sea necesario */
+  padding: 20px; /* Ajusta el relleno interno segÃºn sea necesario */
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+img {
+  width: 100px; /* Ajusta el ancho de las imÃ¡genes segÃºn sea necesario */
+  float: left; /* Coloca las imÃ¡genes a la izquierda */
+  margin-right: 20px; /* AÃ±ade un margen a la derecha para separar las imÃ¡genes del texto */
+}
+
+img:nth-child(even) {
+  float: right; /* Coloca las imÃ¡genes a la derecha si son pares */
+  margin-left: 20px; /* AÃ±ade un margen a la izquierda para separar las imÃ¡genes del texto */
+}
+
+p {
+  margin-top: 0; /* Elimina el margen superior del pÃ¡rrafo */
+  text-align: justify;
+}
+.team {
+  display: flex; /* Establece el diseÃ±o de la caja como flex */
+}
+
+.member {
+  text-align: center; /* Centra el contenido horizontalmente */
+  margin-right: 20px; /* Ajusta el margen entre los miembros del equipo */
+}
+
+.member img {
+  width: 150px; /* Ajusta el ancho de las imÃ¡genes segÃºn sea necesario */
+  border-radius: 50%; /* Hace que las imÃ¡genes sean redondas */
+}
+
+.member p {
+  margin-top: 10px; /* Ajusta el margen superior del pÃ¡rrafo */
   
-  section {
-    margin-bottom: 40px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  img {
-    width: 100px; /* Ajusta el ancho de las imágenes según sea necesario */
-    float: left; /* Coloca las imágenes a la izquierda */
-    margin-right: 20px; /* Añade un margen a la derecha para separar las imágenes del texto */
-  }
-  
-  img:nth-child(even) {
-    float: right; /* Coloca las imágenes a la derecha si son pares */
-    margin-left: 20px; /* Añade un margen a la izquierda para separar las imágenes del texto */
-  }
-  
-  p {
-    margin-top: 0; /* Elimina el margen superior del párrafo */
-  }
-  
+}

@@ -14,23 +14,38 @@ const Acerca = () => {
 
       <section>
         <h2>Nuestra Misión</h2>
-        <p>Nuestra misión es proporcionar un portal que facilite a los amantes de las mascotas encontrar establecimientos de ocio que no solo los acepten, sino que también les brinden una experiencia acogedora y memorable. Queremos promover la inclusión de las mascotas en la vida cotidiana y fomentar un ambiente de diversión y bienestar para todos.</p>
+        <p>¡Bienvenidos a nuestro mundo peludo! En nuestro rincón digital, nos dedicamos apasionadamente a conectar a los amantes de las mascotas con experiencias de ocio que no solo las aceptan, ¡sino que las celebran!
+          Nuestra misión es simple: queremos ser ese portal donde todos los amantes de las mascotas encuentren ese lugar perfecto para pasar un tiempo maravilloso junto a sus peludos amigos. ¿Qué buscamos? Lugares donde tanto humanos como mascotas se sientan bienvenidos, mimados y parte de algo especial.
+          Nos esforzamos por promover la inclusión de las mascotas en la vida cotidiana. Creemos firmemente que la presencia de nuestras queridas mascotas solo puede mejorar nuestros días y nuestras experiencias. ¡Por eso queremos que cada salida sea una aventura inolvidable para todos! Así que únete a nosotros en este viaje hacia un mundo más acogedor y divertido para todos, humanos y mascotas por igual. ¡Juntos, vamos a hacer que cada momento cuente! </p>
+        <p><b>¡Gracias por ser parte de nuestra comunidad peluda!</b></p>
       </section>
 
       <section>
-        <h2>Nuestro Equipo</h2>
-        <div className="team">
-          <div className="member">
-            <img src=".jpg" alt="Miembro del equipo 1" />
-            <p>Descripción del miembro del equipo 1</p>
-          </div>
-          <div className="member">
-            <img src=".jpg" alt="Miembro del equipo 2" />
-            <p>Descripción del miembro del equipo 2</p>
-          </div>
-          {/* Agrega más miembros del equipo según sea necesario */}
+      <h2>Nuestro Equipo</h2>
+      <div className="team">
+        <div className="member">
+          <img src="mujer.png" alt="Irene" />
+          <p>Irene</p>
         </div>
-      </section>
+        <div className="member">
+          <img src="hombre.png" alt="Julio" />
+          <p>Julio</p>
+        </div>
+        <div className="member">
+          <img src="mujer.png" alt="Ruth" />
+          <p>Ruth</p>
+        </div>
+        <div className="member">
+          <img src="hombre.png" alt="Freddy" />
+          <p>Freddy</p>
+        </div>
+        <div className="member">
+          <img src="hombre.png" alt="Javier" />
+          <p>Javier</p>
+        </div>
+      </div>
+    </section>
+
     </div>
   );
 };

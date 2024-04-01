@@ -1,62 +1,92 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const VistaPrincipal = () => {
-  const [lugarSeleccionado, setLugarSeleccionado] = useState(null);
+import './VistaPrincipal.css'; // Asegúrate de tener un archivo CSS llamado Table.css en el mismo directorio que este componente
 
-  // Función para manejar el clic en el mapa
-  const handleClickMapa = (event) => {
-    // Obtener las coordenadas del lugar clicado
-    const lat = event.latLng.lat();
-    const lng = event.latLng.lng();
-
-    // Realizar una solicitud a una API para obtener los detalles del lugar según las coordenadas
-    obtenerInformacionLugar(lat, lng)
-      .then((informacionLugar) => {
-        // Actualizar el estado con la información del lugar seleccionado
-        setLugarSeleccionado(informacionLugar);
-      })
-      .catch((error) => {
-        console.error('Error al obtener la información del lugar:', error);
-      });
-  };
-
-  // Función simulada para obtener la información del lugar desde una API (reemplazar con una solicitud real)
-  const obtenerInformacionLugar = async (lat, lng) => {
-    // Aquí puedes realizar una solicitud a una API real para obtener los detalles del lugar según las coordenadas
-    // En este ejemplo, simplemente se devuelve la información estática de un lugar ficticio
-    return {
-      nombre: 'Lugar Ejemplo',
-      descripcion: 'Descripción de Lugar Ejemplo.',
-      direccion: 'Dirección de Lugar Ejemplo.',
-    };
-  };
-
+function FourByTwoTable() {
   return (
-    <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-      <div style={{ width: '50%', padding: '20px' }}>
-        {lugarSeleccionado && (
-          <>
-            <h2>Lugar: {lugarSeleccionado.nombre}</h2>
-            <p>Descripción: {lugarSeleccionado.descripcion}</p>
-            <p>Dirección: {lugarSeleccionado.direccion}</p>
-          </>
-        )}
+    <div className="inicio" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
+    <div className="button-container">
+    <Link to="/login">
+    <button className="round-button">Añadir</button>
+    </Link>
+    <Link to="/login">
+    <button className="round-button">Editar</button>
+    </Link>
+    <Link to="/inicio">
+    <button className="round-button">LogOut</button>
+    </Link>
+    </div>
+    <div className="table-wrapper">
+      <div className="table-container">
+        <table className="custom-table">
+          <tbody>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
+            <td style={{ fontSize: '1.5em' }}>UPM</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Teléfono</td>
+            <td style={{ fontSize: '1.5em' }}>123 456 789</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
+            <td style={{ fontSize: '1.5em' }}>mascotmercio@upm.es</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Dirección</td>
+            <td style={{ fontSize: '1.5em' }}>Avenida Complutense, 30</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div style={{ width: '35%', marginTop: '100px' }}>
-        <iframe  
-          title="Google Maps"
-          width="100%"
-          height="450"
-          style={{ border: 0 }}
-          loading="lazy"
-          allowFullScreen
-          referrerPolicy="no-referrer-when-downgrade"
-          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdp6FsA21FrpIp1lH5mNpNSYsM9hOs4rg&q=Space+Needle,Seattle+WA`}
-          onClick={handleClickMapa}
-        ></iframe>
+      <div className="horizontal-tables">
+      <table className="custom-table2">
+      <caption className='titulotabla'>Establecimiento</caption>
+        <tbody>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Nombre</td>
+            <td style={{ fontSize: '1.2em' }}>UPM</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Teléfono</td>
+            <td style={{ fontSize: '1.2em' }}>123 456 789</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Correo Electrónico</td>
+            <td style={{ fontSize: '1.2em' }}>mascotmercio@upm.es</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Dirección</td>
+            <td style={{ fontSize: '1.2em' }}>Avenida Complutense, 30</td>
+            </tr>
+          </tbody>
+        </table>
+        <table className="custom-table2">
+        <caption className='titulotabla'>Actividades</caption>
+        <tbody>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Nombre</td>
+            <td style={{ fontSize: '1.2em' }}>Actividad</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Descripción</td>
+            <td style={{ fontSize: '1.2em' }}>blablabla</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Disponibilidad</td>
+            <td style={{ fontSize: '1.2em' }}>04/12/2024</td>
+            </tr>
+            <tr>
+            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Precio</td>
+            <td style={{ fontSize: '1.2em' }}>5€</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
   );
-};
+}
 
-export default VistaPrincipal;
+export default FourByTwoTable;
