@@ -8,3 +8,4 @@ import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoMascota;
 public interface DuenoMascotaRepository extends CrudRepository<DuenoMascota, Long> {
     DuenoMascota findByDuenoMascota(Long id);  
 }
+
