@@ -8,5 +8,4 @@ import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoEstablecimiento;
 @Repository
 public interface DuenoEstablecimientoRepository extends CrudRepository<DuenoEstablecimiento, Long> {
     DuenoEstablecimiento findByDuenoEstablecimiento(Long id);
-
 }
