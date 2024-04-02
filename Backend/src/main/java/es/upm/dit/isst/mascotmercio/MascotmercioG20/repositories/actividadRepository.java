@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Actividad;
 
 @Repository
-public interface ActividadRepository extends CrudRepository<Actividad, Long>{
+//Solucionar el error ublic interface ActividadRepository -> public interface actividadRepository 
+// ¿Debería ser asi? @javiermcayunao @pruthjara
+public interface actividadRepository extends CrudRepository<Actividad, Long>{
     Actividad findByActividad(Long id);
 }
