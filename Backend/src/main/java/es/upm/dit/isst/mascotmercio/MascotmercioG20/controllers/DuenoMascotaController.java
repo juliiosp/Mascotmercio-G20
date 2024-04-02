@@ -1,7 +1,7 @@
 package es.upm.dit.isst.mascotmercio.MascotmercioG20.controllers;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoMascota;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.DuenoMascotaRepository;
+import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.duenomascotaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class DuenoMascotaController {
 
     @Autowired
-    private DuenoMascotaRepository duenoMascotaRepository;
+    private duenomascotaRepository duenoMascotaRepository;
 
     // Obtener todos los dueños de mascotas
     @GetMapping

@@ -1,7 +1,7 @@
 package es.upm.dit.isst.mascotmercio.MascotmercioG20.controllers;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Valoracion;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.ValoracionRepository;
+import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.valoracionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class ValoracionController {
 
     @Autowired
-    private ValoracionRepository valoracionRepository;
+    private valoracionRepository valoracionRepository;
 
     // Obtener todas las valoraciones
     @GetMapping

@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Valoracion;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.ValoracionRepository;
+import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.valoracionRepository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.services.ValoracionService;
 
 public class ValoracionImpl implements ValoracionService{
-    private ValoracionRepository valoracionRepository;
+    private valoracionRepository valoracionRepository;
 
     @Autowired
-    public ValoracionImpl(ValoracionRepository valoracionRepository) {
+    public ValoracionImpl(valoracionRepository valoracionRepository) {
         this.valoracionRepository = valoracionRepository;
     }
 

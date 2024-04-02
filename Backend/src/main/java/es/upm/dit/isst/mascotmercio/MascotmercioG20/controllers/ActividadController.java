@@ -1,7 +1,7 @@
 package es.upm.dit.isst.mascotmercio.MascotmercioG20.controllers;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Actividad;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.ActividadRepository;
+import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.actividadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class ActividadController {
 
     @Autowired
-    private ActividadRepository actividadRepository;
+    private actividadRepository actividadRepository;
 
     // Obtener todas las actividades
     @GetMapping

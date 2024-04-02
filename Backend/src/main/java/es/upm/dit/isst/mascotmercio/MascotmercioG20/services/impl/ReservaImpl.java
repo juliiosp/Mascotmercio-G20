@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Reserva;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.ReservaRepository;
+import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.reservaRepository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.services.ReservaService;
 
 public class ReservaImpl implements ReservaService{
-    private ReservaRepository reservaRepository;
+    private reservaRepository reservaRepository;
 
     @Autowired
-    public ReservaImpl(ReservaRepository reservaRepository) {
+    public ReservaImpl(reservaRepository reservaRepository) {
         this.reservaRepository = reservaRepository;
     }
 

@@ -1,7 +1,7 @@
 package es.upm.dit.isst.mascotmercio.MascotmercioG20.controllers;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Establecimiento;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.EstablecimientoRepository;
+import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.establecimientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class EstablecimientoController {
 
     @Autowired
-    private EstablecimientoRepository establecimientoRepository;
+    private establecimientoRepository establecimientoRepository;
 
     // Obtener todos los establecimientos
     @GetMapping

@@ -1,7 +1,7 @@
 package es.upm.dit.isst.mascotmercio.MascotmercioG20.controllers;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Reserva;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.ReservaRepository;
+import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.reservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class ReservaController {
 
     @Autowired
-    private ReservaRepository reservaRepository;
+    private reservaRepository reservaRepository;
 
     // Obtener todas las reservas
     @GetMapping

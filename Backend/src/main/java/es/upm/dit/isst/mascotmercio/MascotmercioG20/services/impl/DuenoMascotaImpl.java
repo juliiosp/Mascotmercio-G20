@@ -6,14 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.DuenoMascota;
-import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.DuenoMascotaRepository;
+import es.upm.dit.isst.mascotmercio.MascotmercioG20.repositories.duenomascotaRepository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.services.DuenoMascotaService;
 
 public class DuenoMascotaImpl implements DuenoMascotaService{
-    private DuenoMascotaRepository duenoMascotaRepository;
+    private duenomascotaRepository duenoMascotaRepository;
 
     @Autowired
-    public DuenoMascotaImpl(DuenoMascotaRepository duenoMascotaRepository) {
+    public DuenoMascotaImpl(duenomascotaRepository duenoMascotaRepository) {
         this.duenoMascotaRepository = duenoMascotaRepository;
     }
 

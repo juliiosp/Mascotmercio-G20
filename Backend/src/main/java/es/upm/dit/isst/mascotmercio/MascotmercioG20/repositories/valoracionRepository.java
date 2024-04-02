@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Valoracion;
 
 @Repository
-public interface ValoracionRepository extends CrudRepository<Valoracion, Long>{
+public interface valoracionRepository extends CrudRepository<Valoracion, Long>{
     Valoracion findByValoracion(Long id);
 }
