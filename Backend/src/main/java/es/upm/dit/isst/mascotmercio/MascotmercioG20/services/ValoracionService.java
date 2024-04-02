@@ -10,4 +10,8 @@ import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Valoracion;
 public interface ValoracionService {
     
     List<Valoracion> findAllValoraciones();
+    Valoracion createValoracion(Valoracion Actividad);
+    Valoracion getValoracionById(Long id);
+    Valoracion updateValoracion(Valoracion Actividad);
+    void deleteValoracion(Long id);
 }

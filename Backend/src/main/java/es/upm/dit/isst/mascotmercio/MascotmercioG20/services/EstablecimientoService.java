@@ -10,4 +10,8 @@ import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Establecimiento;
 public interface EstablecimientoService {
     
     List<Establecimiento> findAllEstablecimientos();
+    Establecimiento createEstablecimiento(Establecimiento Actividad);
+    Establecimiento getEstablecimientoById(Long id);
+    Establecimiento updateEstablecimiento(Establecimiento Actividad);
+    void deleteEstablecimiento(Long id);
 }

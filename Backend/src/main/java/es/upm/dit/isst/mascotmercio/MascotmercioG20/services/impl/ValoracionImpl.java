@@ -1,6 +1,7 @@
 package es.upm.dit.isst.mascotmercio.MascotmercioG20.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,6 +22,32 @@ public class ValoracionImpl implements ValoracionService{
          List<Valoracion> valoraciones = (List<Valoracion>) valoracionRepository.findAll();
          return valoraciones;
     }
+
+    @Override
+    public Valoracion createValoracion(Valoracion valoracion) {
+        return valoracionRepository.save(valoracion);
+    }
+
+    @Override
+    public Valoracion getValoracionById(Long id) {
+        Optional<Valoracion> valoracion = valoracionRepository.findById(id);
+        if(valoracion.isPresent()){
+            return valoracion.get();
+        } else {
+            throw new RuntimeException("Dueño de Establecimiento con id " + id + " no encontrado");
+        }
+    }
+
+    @Override
+    public Valoracion updateValoracion(Valoracion valoracion) {
+        return valoracionRepository.save(valoracion);
+    }
+
+    @Override
+    public void deleteValoracion(Long id) {
+        valoracionRepository.deleteById(id);
+    }
+    
 
 }
     
