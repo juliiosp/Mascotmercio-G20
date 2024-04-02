@@ -10,8 +10,8 @@ import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Actividad;
 public interface ActividadService {
     
     List<Actividad> findAllActividades();
-    Actividad createActividad(Actividad Actividad);
+    Actividad createActividad(Actividad actividad);
     Actividad getActividadById(Long id);
-    Actividad updateActividad(Actividad Actividad);
+    Actividad updateActividad(Actividad actividad);
     void deleteActividad(Long id);
 }

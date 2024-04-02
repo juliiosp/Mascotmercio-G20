@@ -10,8 +10,8 @@ import es.upm.dit.isst.mascotmercio.MascotmercioG20.models.Reserva;
 public interface ReservaService {
     
     List<Reserva> findAllReservas();
-    Reserva createReserva(Reserva Actividad);
+    Reserva createReserva(Reserva reserva);
     Reserva getReservaById(Long id);
-    Reserva updateReserva(Reserva Actividad);
+    Reserva updateReserva(Reserva reserva);
     void deleteReserva(Long id);
 }
