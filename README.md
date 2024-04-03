@@ -1,7 +1,16 @@
 Para lanzar la aplicación, seguir los siguientes pasos:
 
-1) Lanzar el servidor: ./mvnw clean install spring-boot:run -DskipTests=true
+1) Lanzar el servidor:
+   ```bash 
+    ./mvnw clean install spring-boot:run -DskipTests=true 
+   ```
 
-2) Instalar dependencias Frontend: npm install
+2) Instalar dependencias Frontend:
+   ```bash 
+    .npm install
+   ```
 
-3) Lanzar la web: npm start
+3) Lanzar la web:
+    ```bash 
+    .npm start
+    ```
