@@ -56,7 +56,7 @@ const VistaMapa = () => {
   }, []); // Se ejecuta solo una vez al montar el componente
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', height: 'auto' }}>
       <div className="button-container">
         <Link to="/">
           <button className="round-button">LogOut</button>
@@ -91,7 +91,7 @@ const VistaMapa = () => {
             </div>
           )}
         </div>
-        <div style={{ width: '50%', marginTop: '100px' }}>
+        <div style={{ width: '35%', marginTop: '100px' }}>
           <div ref={mapRef} style={{ width: '100%', height: '450px' }}></div>
         </div>
       </div>
