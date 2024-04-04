@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/duenosEstablecimient") // URL base para el controlador 
+@RequestMapping("/api/duenoEstablecimiento") // URL base para el controlador 
 public class DuenoEstablecimientoController {
 
     @Autowired

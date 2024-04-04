@@ -17,6 +17,10 @@ public class DuenoMascota {
     private String email;
     private String contraseña;
 
+    public DuenoMascota(){
+        
+    }
+
     public DuenoMascota(Long id, String nombre, int telefono, String direccion, String email, String contraseña) {
 
         this.id = id;

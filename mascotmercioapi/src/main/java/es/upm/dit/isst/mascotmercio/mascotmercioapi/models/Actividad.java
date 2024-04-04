@@ -26,6 +26,10 @@ public class Actividad {
         this.precio = precio;
     }
 
+    public Actividad(){
+        
+    }
+
     public long getId() {
         return id;
     }

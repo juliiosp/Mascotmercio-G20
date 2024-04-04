@@ -17,6 +17,10 @@ public class Valoracion {
     private int calificacion;
     private Date fecha;
 
+    public Valoracion(){
+        
+    }
+
     public Valoracion(long id, String reseña, String foto, int calificacion, Date fecha) {
         this.id = id;
         this.reseña = reseña;

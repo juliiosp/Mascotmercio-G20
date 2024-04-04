@@ -16,6 +16,10 @@ public class Reserva {
     private int numpersonas;
     private int nummascotas;
 
+    public Reserva(){
+        
+    }
+
     public Reserva(long id, Date fecha, int numpersonas, int nummascotas) {
         this.id = id;
         this.fecha = fecha;

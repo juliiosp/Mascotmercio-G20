@@ -9,7 +9,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class Establecimiento {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
+        
+    public Establecimiento(){
+        }
 }

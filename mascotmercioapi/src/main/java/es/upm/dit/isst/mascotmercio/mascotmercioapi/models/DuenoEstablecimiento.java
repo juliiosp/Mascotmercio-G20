@@ -17,6 +17,10 @@ public class DuenoEstablecimiento {
     private String email;
     private String contraseña;
 
+    public DuenoEstablecimiento(){
+
+    }
+
     public DuenoEstablecimiento(Long id, String nombre, int telefono, String direccion, String email,
             String contraseña) {
 
