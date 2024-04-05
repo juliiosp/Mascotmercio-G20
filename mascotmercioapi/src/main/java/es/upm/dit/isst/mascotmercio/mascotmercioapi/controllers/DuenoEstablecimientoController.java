@@ -49,7 +49,6 @@ public class DuenoEstablecimientoController {
                 .map(dueno -> {
                     dueno.setNombre(updatedDueno.getNombre());
                     dueno.setTelefono(updatedDueno.getTelefono());
-                    dueno.setDireccion(updatedDueno.getDireccion());
                     dueno.setEmail(updatedDueno.getEmail());
                     dueno.setContraseña(updatedDueno.getContraseña());
                     return ResponseEntity.ok(duenoEstablecimientoRepository.save(dueno));

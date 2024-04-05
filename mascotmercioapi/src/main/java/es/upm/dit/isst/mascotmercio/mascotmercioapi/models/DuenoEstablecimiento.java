@@ -13,7 +13,6 @@ public class DuenoEstablecimiento {
     private Long id;
     private String nombre;
     private int telefono;
-    private String direccion;
     private String email;
     private String contraseña;
 
@@ -21,15 +20,21 @@ public class DuenoEstablecimiento {
 
     }
 
-    public DuenoEstablecimiento(Long id, String nombre, int telefono, String direccion, String email,
-            String contraseña) {
+    public DuenoEstablecimiento(Long id, String nombre, int telefono, String email, String contraseña) {
 
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
-        this.direccion = direccion;
         this.email = email;
         this.contraseña = contraseña;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -46,14 +51,6 @@ public class DuenoEstablecimiento {
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public String getEmail() {
