@@ -18,10 +18,10 @@ const VistaMapa = () => {
       // Array de ubicaciones con sus coordenadas y detalles
       const locations = [
         { lat: 40.4203, lng: -3.7058, title: 'Ubicación 1', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
-        { lat: 40.4203, lng: -3.6058, title: 'Ubicación 3', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
-        { lat: 40.5203, lng: -3.7058, title: 'Ubicación 4', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
-        { lat: 40.6203, lng: -3.71058, title: 'Ubicación 45', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
-        { lat: 40.4203, lng: -3.721058, title: 'Ubicación 54', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
+        { lat: 40.4203, lng: -3.6058, title: 'Ubicación 3', telefono: '532 543 234', direccion: 'Avenida Felipe', correo: 'izquierda@upm.es' },
+        { lat: 40.5203, lng: -3.7058, title: 'Ubicación 4', telefono: '603 583 753', direccion: 'Avenida Fernando', correo: 'derecha@upm.es' },
+        { lat: 40.6203, lng: -3.71058, title: 'Ubicación 45', telefono: '630 483 274', direccion: 'Cristo Rey', correo: 'adios@upm.es' },
+        { lat: 40.4203, lng: -3.721058, title: 'Ubicación 54', telefono: '629 475 069', direccion: 'Guzmán el Bueno', correo: 'hola@upm.es' },
 
       ];
 
@@ -53,11 +53,11 @@ const VistaMapa = () => {
       window.initMap = loadMap; // Función de devolución de llamada para cargar el mapa una vez que se cargue la API
       document.head.appendChild(script);
     }
-  }, []); // Se ejecuta solo una vez al montar el componente
+  }, []); 
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', height: 'auto' }}>
-      <div className="button-container">
+      <div className="botones-vistamapa">
         <Link to="/">
           <button className="round-button">LogOut</button>
         </Link>
@@ -68,7 +68,7 @@ const VistaMapa = () => {
         <div style={{ width: '35%', padding: '20px' }}>
           {ubicacionSeleccionada && (
             <div className="table-container">
-              <table className="custom-table-mapa">
+              <table className="tabla">
                 <tbody>
                   <tr>
                     <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>

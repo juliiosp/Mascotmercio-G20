@@ -23,17 +23,17 @@
   border-radius: 8px;
 }
 
-.horizontal-tables .custom-table2 {
+.horizontal-tables .tabla2 {
   margin-right: 50px; /* Espacio entre las tablas horizontales */
   border-collapse: collapse;
 }
 
-.custom-table {
+.tabla {
   border-collapse: collapse;
   border-radius: 5px;
 }
 
-.custom-table td {
+.tabla td {
   background-color: white;
   border: 1px solid #ccc; /* Bordes grises */
   padding: 8px;
@@ -43,7 +43,7 @@
   border-collapse: collapse;
 }
 
-.custom-table2 td {
+.tabla2 td {
   background-color: white;
   border: 1px solid #ccc; /* Bordes grises */
   height: 100%;
@@ -53,7 +53,7 @@
   border-collapse: collapse;
 }
 
-.inicio {
+.fondo-vistaprincipal {
   padding: 10px;
   height: auto;
 }
@@ -64,7 +64,7 @@
   float: left;
 }
 
-.button-container {
+.botones-vistaprincipal {
   display: flex;
   justify-content: right;
   margin-top: 10px;

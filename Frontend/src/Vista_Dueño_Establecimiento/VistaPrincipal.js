@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './VistaPrincipal.css'; // Asegúrate de tener un archivo CSS llamado Table.css en el mismo directorio que este componente
+import './VistaPrincipal.css'; 
 
-function FourByTwoTable() {
+function VistaPrincipal() {
   return (
-    <div className="inicio" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
-    <div className="button-container">
+    <div className="fondo-vistaprincipal" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
+    <div className="botones-vistaprincipal">
     <Link to="/login">
     <button className="round-button">Añadir</button>
     </Link>
@@ -19,7 +19,7 @@ function FourByTwoTable() {
     </div>
     <div className="table-wrapper">
       <div className="table-container">
-        <table className="custom-table">
+        <table className="tabla">
           <tbody>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
@@ -41,7 +41,7 @@ function FourByTwoTable() {
         </table>
       </div>
       <div className="horizontal-tables">
-      <table className="custom-table2">
+      <table className="tabla2">
       <caption className='titulotabla'>Establecimiento</caption>
         <tbody>
             <tr>
@@ -62,7 +62,7 @@ function FourByTwoTable() {
             </tr>
           </tbody>
         </table>
-        <table className="custom-table2">
+        <table className="tabla2">
         <caption className='titulotabla'>Actividades</caption>
         <tbody>
             <tr>
@@ -89,4 +89,4 @@ function FourByTwoTable() {
   );
 }
 
-export default FourByTwoTable;
+export default VistaPrincipal;
