@@ -24,7 +24,7 @@ const Añadir = () => {
           <input type="text" id="email" name="email" />
         </div>
         <button type="submit">Subir</button>
-        <Link to="/usuario2">
+        <Link to="/duenoEstablecimiento">
           <button className="round-button">Volver</button>
         </Link>  
       </form>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Reserva.css'; // Importa los estilos CSS
 
 const Reserva = () => {
@@ -20,6 +21,9 @@ const Reserva = () => {
           <input type="int" id="nmascotas" name="nmascotas" />
         </div>
         <button type="submit">Enviar</button>
+        <Link to="/duenoMascota">
+          <button className="round-button">Volver</button>
+        </Link>
       </form>
     </div>
   );

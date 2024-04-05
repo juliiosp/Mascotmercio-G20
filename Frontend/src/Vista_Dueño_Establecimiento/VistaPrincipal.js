@@ -16,7 +16,7 @@ function VistaPrincipal() {
     <Link to="/editar">
     <button className="round-button">Editar</button>
     </Link>
-    <Link to="/inicio">
+    <Link to="/">
     <button className="round-button">LogOut</button>
     </Link>
     </div>
