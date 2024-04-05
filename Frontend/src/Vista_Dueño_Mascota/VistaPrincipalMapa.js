@@ -18,12 +18,11 @@ const VistaMapa = () => {
 
       // Array de ubicaciones con sus coordenadas y detalles
       const locations = [
-        { lat: 40.4203, lng: -3.7058, title: 'Ubicación 1', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
+        { image: '404.png', lat: 40.4203, lng: -3.7058, title: 'Ubicación 1', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
         { lat: 40.4203, lng: -3.6058, title: 'Ubicación 3', telefono: '532 543 234', direccion: 'Avenida Felipe', correo: 'izquierda@upm.es' },
         { lat: 40.5203, lng: -3.7058, title: 'Ubicación 4', telefono: '603 583 753', direccion: 'Avenida Fernando', correo: 'derecha@upm.es' },
         { lat: 40.6203, lng: -3.71058, title: 'Ubicación 45', telefono: '630 483 274', direccion: 'Cristo Rey', correo: 'adios@upm.es' },
         { lat: 40.4203, lng: -3.721058, title: 'Ubicación 54', telefono: '629 475 069', direccion: 'Guzmán el Bueno', correo: 'hola@upm.es' },
-
       ];
 
       // Añadir marcadores para cada ubicación
@@ -54,7 +53,7 @@ const VistaMapa = () => {
       window.initMap = loadMap; // Función de devolución de llamada para cargar el mapa una vez que se cargue la API
       document.head.appendChild(script);
     }
-  }, []); 
+  }, []);
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', height: 'auto' }}>
@@ -65,47 +64,52 @@ const VistaMapa = () => {
         <Link to="/reserva">
           <button className="round-button">Reservar</button>
         </Link>
-        </div>
-        <div style={{ width: '35%', padding: '20px' }}>
-        <div className="busqueda" style={{ width: '100%', display: 'flex' ,justifyContent:'end' }}>
-        <input
-          type="text"
-          placeholder="Buscar establecimiento"
-          value={busqueda}
-          onChange={(e) => setBusqueda(e.target.value)}
-          style={{ width: '40%' }}
-        />
-        {/* lógica de búsqueda */}
       </div>
-          {ubicacionSeleccionada && (
-            <div className="table-container">
-              <table className="tabla">
-                <tbody>
-                  <tr>
-                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
-                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.title}</td>
-                  </tr>
-                  <tr>
-                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Teléfono</td>
-                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.telefono}</td>
-                  </tr>
-                  <tr>
-                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Dirección</td>
-                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.direccion}</td>
-                  </tr>
-                  <tr>
-                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
-                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.correo}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          )}
+      <div style={{ width: '35%', padding: '20px' }}>
+        <div className="busqueda" style={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
+          <input
+            type="text"
+            placeholder="Buscar establecimiento"
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            style={{ width: '40%' }}
+          />
+          {/* lógica de búsqueda */}
         </div>
-        <div style={{ width: '35%', marginTop: '100px' }}>
-          <div ref={mapRef} style={{ width: '100%', height: '450px' }}></div>
-        </div>
+        {ubicacionSeleccionada && (
+          <div className="table-container">
+            <table className="tabla">
+              <tbody>
+                <tr>
+                  <td colSpan="2" style={{ fontSize: '1.5em', textAlign: 'center' }}>
+                    <img src={ubicacionSeleccionada.image} alt="Imagen de ubicación" style={{ width: '100%', maxHeight: '200px' }} />
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
+                  <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.title}</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Teléfono</td>
+                  <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.telefono}</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Dirección</td>
+                  <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.direccion}</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
+                  <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.correo}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
+      <div style={{ width: '35%', marginTop: '100px' }}>
+        <div ref={mapRef} style={{ width: '100%', height: '450px' }}></div>
+      </div>
+    </div>
   );
 };
 
