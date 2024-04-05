@@ -28,8 +28,8 @@ function App() {
 			  <Route path="/registro" element={<Registro />} />
 			  <Route path="/contacto" element={<Contacto />} />
 			  <Route path="/acerca" element={<Acerca />} />
-			  <Route path="/usuario" element={<VistaPrincipalMapa />} />
-			  <Route path="/usuario2" element={<VistaPrincipal />} />
+			  <Route path="/duenoMascota" element={<VistaPrincipalMapa />} />
+			  <Route path="/duenoEstablecimiento" element={<VistaPrincipal />} />
 			  <Route path="/reserva" element={<Reserva />} />
 			  <Route path="/anadirEst" element={<AñadirEstablecimiento />} />
 			  <Route path="/anadirAct" element={<AñadirActividad />} />

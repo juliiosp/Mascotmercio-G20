@@ -28,10 +28,10 @@ const BotonesInicio = () => {
     return (
         <div style={containerStyle}>
             <div style={buttonContainerStyle}>
-                <Link to="/login">
+                <Link to="/duenoMascota">
                     <button style={buttonStyle}>Dueño de mascota</button>
                 </Link>
-                <Link to="login">
+                <Link to="duenoEstablecimiento">
                     <button style={buttonStyle}>Propietario de establecimiento</button>
                 </Link>
             </div>
