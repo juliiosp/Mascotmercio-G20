@@ -1,10 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './VistaMapa.css';
+import './VistaPrincipalMapa.css';
 
 const VistaMapa = () => {
   const mapRef = useRef(null); // Referencia al elemento del mapa
   const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState(null);
+  const [busqueda, setBusqueda] = useState('');
 
   useEffect(() => {
     // Función para cargar el mapa
@@ -66,6 +67,16 @@ const VistaMapa = () => {
         </Link>
         </div>
         <div style={{ width: '35%', padding: '20px' }}>
+        <div className="busqueda" style={{ width: '100%', display: 'flex' ,justifyContent:'end' }}>
+        <input
+          type="text"
+          placeholder="Buscar ubicación"
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+          style={{ width: '40%' }}
+        />
+        {/* lógica de búsqueda */}
+      </div>
           {ubicacionSeleccionada && (
             <div className="table-container">
               <table className="tabla">
