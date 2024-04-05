@@ -6,11 +6,14 @@ import Registro from './Registro';
 import Login from './Login';
 import Contacto from './Contacto';
 import Acerca from './Acerca';
-import VistaMapa from './Vista_Dueño_Mascota/VistaMapa';
+import VistaPrincipalMapa from './Vista_Dueño_Mascota/VistaPrincipalMapa';
 import VistaPrincipal from './Vista_Dueño_Establecimiento/VistaPrincipal';
 import { useState, useEffect } from "react";
 import NoMatch from "./NoMatch";
 import { Routes, Route } from "react-router-dom";
+import Reserva from './Vista_Dueño_Mascota/Reserva';
+import AñadirActividad from './Vista_Dueño_Establecimiento/AñadirActividad'
+import AñadirEstablecimiento from './Vista_Dueño_Establecimiento/AñadirEstablecimiento'
 
 function App() {
 
@@ -24,8 +27,11 @@ function App() {
 			  <Route path="/registro" element={<Registro />} />
 			  <Route path="/contacto" element={<Contacto />} />
 			  <Route path="/acerca" element={<Acerca />} />
-			  <Route path="/usuario" element={<VistaMapa />} />
+			  <Route path="/usuario" element={<VistaPrincipalMapa />} />
 			  <Route path="/usuario2" element={<VistaPrincipal />} />
+			  <Route path="/reserva" element={<Reserva />} />
+			  <Route path="/anadirEst" element={<AñadirEstablecimiento />} />
+			  <Route path="/anadirAct" element={<AñadirActividad />} />
 			  <Route path="*" element={<NoMatch />} />
 			</Routes>
 		  </div>
