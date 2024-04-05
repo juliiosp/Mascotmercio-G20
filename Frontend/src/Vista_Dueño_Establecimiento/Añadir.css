@@ -1,0 +1,32 @@
+.fondo-añadir {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 800px; /* Ajusta la altura segÃºn sea necesario */
+  }
+  .form-group {
+    margin-bottom: 10px; /* Reducir el margen inferior de los grupos de formulario */
+  }
+  
+  input[type="text"],
+  input[type="int"],
+  input[type="email"],
+  textarea {
+    width: calc(100% - 22px); /* Reducir el ancho de los inputs para tener en cuenta el padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+  }

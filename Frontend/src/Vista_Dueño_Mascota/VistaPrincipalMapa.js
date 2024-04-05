@@ -62,7 +62,7 @@ const VistaMapa = () => {
         <Link to="/">
           <button className="round-button">LogOut</button>
         </Link>
-        <Link to="/">
+        <Link to="/reserva">
           <button className="round-button">Reservar</button>
         </Link>
         </div>
@@ -70,7 +70,7 @@ const VistaMapa = () => {
         <div className="busqueda" style={{ width: '100%', display: 'flex' ,justifyContent:'end' }}>
         <input
           type="text"
-          placeholder="Buscar ubicación"
+          placeholder="Buscar establecimiento"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
           style={{ width: '40%' }}

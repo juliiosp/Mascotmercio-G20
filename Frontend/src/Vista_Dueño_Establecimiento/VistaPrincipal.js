@@ -7,8 +7,11 @@ function VistaPrincipal() {
   return (
     <div className="fondo-vistaprincipal" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
     <div className="botones-vistaprincipal">
-    <Link to="/login">
-    <button className="round-button">Añadir</button>
+    <Link to="/anadirEst">
+    <button className="round-button">Añadir Establecimiento</button>
+    </Link>
+    <Link to="/anadirAct">
+    <button className="round-button">Añadir Actividad</button>
     </Link>
     <Link to="/login">
     <button className="round-button">Editar</button>
