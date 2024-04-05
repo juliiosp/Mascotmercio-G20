@@ -14,6 +14,7 @@ import { Routes, Route } from "react-router-dom";
 import Reserva from './Vista_Dueño_Mascota/Reserva';
 import AñadirActividad from './Vista_Dueño_Establecimiento/AñadirActividad'
 import AñadirEstablecimiento from './Vista_Dueño_Establecimiento/AñadirEstablecimiento'
+import Editar from './Vista_Dueño_Establecimiento/Editar'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
 			  <Route path="/reserva" element={<Reserva />} />
 			  <Route path="/anadirEst" element={<AñadirEstablecimiento />} />
 			  <Route path="/anadirAct" element={<AñadirActividad />} />
+			  <Route path="/editar" element={<Editar />} />
 			  <Route path="*" element={<NoMatch />} />
 			</Routes>
 		  </div>
