@@ -3,7 +3,7 @@ import './Contacto.css'; // Importa los estilos CSS
 
 const Contacto = () => {
   return (
-    <div className="contacto" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
+    <div className="fondo-contacto" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
       <h1>Contacto</h1>
       <p>Por favor, completa el formulario a continuación para ponerte en contacto con nosotros:</p>
       <form className="contacto-formulario">

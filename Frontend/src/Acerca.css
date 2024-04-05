@@ -1,4 +1,4 @@
-.content {
+.fondo-acerca {
   padding: 20px;
   height: auto;
 }
@@ -15,21 +15,6 @@ h2 {
   margin-bottom: 10px;
 }
 
-img {
-  width: 100px; /* Ajusta el ancho de las imÃ¡genes segÃºn sea necesario */
-  float: left; /* Coloca las imÃ¡genes a la izquierda */
-  margin-right: 20px; /* AÃ±ade un margen a la derecha para separar las imÃ¡genes del texto */
-}
-
-img:nth-child(even) {
-  float: right; /* Coloca las imÃ¡genes a la derecha si son pares */
-  margin-left: 20px; /* AÃ±ade un margen a la izquierda para separar las imÃ¡genes del texto */
-}
-
-p {
-  margin-top: 0; /* Elimina el margen superior del pÃ¡rrafo */
-  text-align: justify;
-}
 .team {
   display: flex; /* Establece el diseÃ±o de la caja como flex */
 }

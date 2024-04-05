@@ -4,7 +4,7 @@ import './Login.css'; // Importa los estilos CSS
 //Podemos poner el fondo en blanco y el menú mantenerlo en negro. 
 const Login = () => {
   return (
-    <div className="container-sesion" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
+    <div className="fondo-login" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
       <Link to="/registro" className="register-button">Registrarse</Link>
       <h1>Inicia Sesión</h1>
       <form>

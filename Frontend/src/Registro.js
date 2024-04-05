@@ -4,7 +4,7 @@ import './Registro.css'; // Importa los estilos CSS
 
 const Registro = () => {
   return (
-    <div className="container-registro" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
+    <div className="fondo-registro" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
       <Link to="/login" className="login-link">Volver</Link>
       <h1>Crea tu cuenta</h1>
       <form>

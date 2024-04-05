@@ -14,16 +14,17 @@ const NoMatch = () => {
       <div style={{ fontSize: "24px", fontWeight: "bold", marginTop: "20px" }}>
         Ruta no encontrada
       </div>
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/">
         <button
           style={{
             padding: "10px 20px",
             fontSize: "18px",
             marginTop: "20px",
-            backgroundColor: "#007bff",
+            marginBottom: "20px",
+            backgroundColor: "#000000",
             color: "#fff",
             border: "none",
-            borderRadius: "5px",
+            borderRadius: "25px",
             cursor: "pointer",
           }}
         >
