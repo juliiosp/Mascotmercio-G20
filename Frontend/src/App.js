@@ -18,6 +18,8 @@ import AñadirEstablecimiento from './Vista_Dueño_Establecimiento/AñadirEstabl
 import Editar from './Vista_Dueño_Establecimiento/Editar';
 import MisReservas from './Vista_Dueño_Mascota/MisReservas';
 import ReservaEst from './Vista_Dueño_Establecimiento/ReservaEst'
+import MiPerfil from './Vista_Dueño_Mascota/Perfil';
+
 function App() {
 
 	return (
@@ -40,6 +42,7 @@ function App() {
 			  <Route path="*" element={<NoMatch />} />
 			  <Route path="/misreservas" element={<MisReservas />} />
 			  <Route path="/reservasEst" element={<ReservaEst />} />
+			  <Route path="/perfil" element={<MiPerfil />} />
 			</Routes>
 		  </div>
 		  <Footer />
