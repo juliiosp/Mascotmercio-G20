@@ -15,14 +15,10 @@ const VistaMapa = () => {
         center: { lat: 40.416775, lng: -3.70379 }, // Coordenadas del centro del mapa (Madrid)
         zoom: 12, // Zoom inicial del mapa
       });
-      
+
       // Array de ubicaciones con sus coordenadas y detalles
       const locations = [
-        { image: '404.png', lat: 40.4203, lng: -3.7058, title: 'Ubicación 1', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
-        { lat: 40.4203, lng: -3.6058, title: 'Ubicación 3', telefono: '532 543 234', direccion: 'Avenida Felipe', correo: 'izquierda@upm.es' },
-        { lat: 40.5203, lng: -3.7058, title: 'Ubicación 4', telefono: '603 583 753', direccion: 'Avenida Fernando', correo: 'derecha@upm.es' },
-        { lat: 40.6203, lng: -3.71058, title: 'Ubicación 45', telefono: '630 483 274', direccion: 'Cristo Rey', correo: 'adios@upm.es' },
-        { lat: 40.4203, lng: -3.721058, title: 'Ubicación 54', telefono: '629 475 069', direccion: 'Guzmán el Bueno', correo: 'hola@upm.es' },
+        {lat: 40.4203, lng: -3.7058, title: 'Ubicación 1', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' }
       ];
 
       // Añadir marcadores para cada ubicación
@@ -61,9 +57,6 @@ const VistaMapa = () => {
         <Link to="/">
           <button className="round-button">LogOut</button>
         </Link>
-        <Link to="/reserva">
-          <button className="round-button">Reservar</button>
-        </Link>
       </div>
       <div style={{ width: '35%', padding: '20px' }}>
         <div className="busqueda" style={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
@@ -79,6 +72,11 @@ const VistaMapa = () => {
         {ubicacionSeleccionada && (
           <div className="table-container">
             <table className="tabla">
+              <div className="botones-vistamapa">
+                <Link to="/detalle">
+                  <button className="round-button">Ver Más</button>
+                </Link>
+              </div>
               <tbody>
                 {/*<tr>
                   <td colSpan="2" style={{ fontSize: '1.5em', textAlign: 'center' }}>

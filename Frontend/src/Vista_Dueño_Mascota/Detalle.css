@@ -1,0 +1,61 @@
+.table-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    margin-top: 50px;
+  }
+
+  .horizontal-tables {
+    display: flex;
+    align-self: center;
+    margin-top: 30px;  
+    background-color: rgba(235, 237, 237, 0.685); /* Fondo gris */
+    margin-bottom: 10px; /* Espacio entre la tabla principal y las tablas horizontales */
+    padding: 20px;
+    border-radius: 8px;
+    height: auto;
+  }
+  
+  .horizontal-tables .tabla {
+    margin-right: 50px; /* Espacio entre las tablas horizontales */
+    border-collapse: collapse;
+  }
+  
+  .tabla td {
+    background-color: white;
+    border: 1px solid #ccc; /* Bordes grises */
+    height: 100%;
+    height: 70px;
+    width: 300px;
+    padding: 5px;
+    border-collapse: collapse;
+  }
+  
+  .fondo-detalle {
+    padding: 10px;
+    height: 700px;
+  }
+  
+  .titulotabla {
+    font-weight: bold;
+    font-size: 1.4em;
+    float: left;
+  }
+  
+  .botones-vistaprincipal {
+    display: flex;
+    justify-content: right;
+    margin-top: 10px;
+  }
+  
+  .round-button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  

@@ -12,9 +12,10 @@ import { useState, useEffect } from "react";
 import NoMatch from "./NoMatch";
 import { Routes, Route } from "react-router-dom";
 import Reserva from './Vista_Dueño_Mascota/Reserva';
-import AñadirActividad from './Vista_Dueño_Establecimiento/AñadirActividad'
-import AñadirEstablecimiento from './Vista_Dueño_Establecimiento/AñadirEstablecimiento'
-import Editar from './Vista_Dueño_Establecimiento/Editar'
+import Detalle from './Vista_Dueño_Mascota/Detalle';
+import AñadirActividad from './Vista_Dueño_Establecimiento/AñadirActividad';
+import AñadirEstablecimiento from './Vista_Dueño_Establecimiento/AñadirEstablecimiento';
+import Editar from './Vista_Dueño_Establecimiento/Editar';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
 			  <Route path="/anadirEst" element={<AñadirEstablecimiento />} />
 			  <Route path="/anadirAct" element={<AñadirActividad />} />
 			  <Route path="/editar" element={<Editar />} />
+			  <Route path="/detalle" element={<Detalle />} />
 			  <Route path="*" element={<NoMatch />} />
 			</Routes>
 		  </div>
