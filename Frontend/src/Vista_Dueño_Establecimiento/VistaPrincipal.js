@@ -78,6 +78,7 @@ function VistaPrincipal() {
     <div className="table-wrapper">
       <div className="table-container">
         <table className="tabla">
+        <caption className='titulotabla'>Usuario</caption>
             <tbody>
               <tr>
                 <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
@@ -90,10 +91,6 @@ function VistaPrincipal() {
               <tr>
                 <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
                 <td style={{ fontSize: '1.5em' }}>{duenoEstablecimiento && duenoEstablecimiento.email}</td>
-              </tr>
-              <tr>
-                <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Dirección</td>
-                <td style={{ fontSize: '1.5em' }}>Avenida Complutense, 30</td> {/* No está incluida en la respuesta del backend */}
               </tr>
             </tbody>
           </table>
