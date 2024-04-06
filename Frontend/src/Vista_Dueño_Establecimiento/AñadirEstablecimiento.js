@@ -31,8 +31,7 @@ const Añadir = () => {
 
       // Puedes redirigir a la página principal o a otra página después de enviar el formulario
       // Aquí te redirijo a la página de VistaPrincipal
-      // @juliiosp aqui hay que cambiar algo para que no nos lleve a la de error!!!
-      window.location.href = '/vistaPrincipal';
+      window.location.href = '/duenoEstablecimiento';
     } catch (error) {
       console.error('Error submitting form:', error);
     }

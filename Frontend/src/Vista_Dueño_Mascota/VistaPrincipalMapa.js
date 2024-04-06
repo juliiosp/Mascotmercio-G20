@@ -15,7 +15,7 @@ const VistaMapa = () => {
         center: { lat: 40.416775, lng: -3.70379 }, // Coordenadas del centro del mapa (Madrid)
         zoom: 12, // Zoom inicial del mapa
       });
-
+      
       // Array de ubicaciones con sus coordenadas y detalles
       const locations = [
         { image: '404.png', lat: 40.4203, lng: -3.7058, title: 'Ubicación 1', telefono: '123 456 789', direccion: 'Avenida Moncloa', correo: 'upm@upm.es' },
@@ -80,11 +80,11 @@ const VistaMapa = () => {
           <div className="table-container">
             <table className="tabla">
               <tbody>
-                <tr>
+                {/*<tr>
                   <td colSpan="2" style={{ fontSize: '1.5em', textAlign: 'center' }}>
                     <img src={ubicacionSeleccionada.image} alt="Imagen de ubicación" style={{ width: '100%', maxHeight: '200px' }} />
                   </td>
-                </tr>
+                </tr>*/}
                 <tr>
                   <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
                   <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.title}</td>

@@ -23,6 +23,42 @@ function VistaPrincipal() {
     fetchData();
   }, []);
 
+  const [establecimiento, setEstablecimiento] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/establecimientos/1');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setEstablecimiento(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const [actividad, setActividad] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/actividades/1');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setActividad(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="fondo-vistaprincipal" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
     <div className="botones-vistaprincipal">
@@ -68,19 +104,19 @@ function VistaPrincipal() {
         <tbody>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Nombre</td>
-            <td style={{ fontSize: '1.2em' }}>UPM</td>
+            <td style={{ fontSize: '1.2em' }}>{establecimiento && establecimiento.nombre}</td>
             </tr>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Teléfono</td>
-            <td style={{ fontSize: '1.2em' }}>123 456 789</td>
+            <td style={{ fontSize: '1.2em' }}>{establecimiento && establecimiento.telefono}</td>
             </tr>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Correo Electrónico</td>
-            <td style={{ fontSize: '1.2em' }}>mascotmercio@upm.es</td>
+            <td style={{ fontSize: '1.2em' }}>{establecimiento && establecimiento.email}</td>
             </tr>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Dirección</td>
-            <td style={{ fontSize: '1.2em' }}>Avenida Complutense, 30</td>
+            <td style={{ fontSize: '1.2em' }}>{establecimiento && establecimiento.direccion}</td>
             </tr>
           </tbody>
         </table>
@@ -89,19 +125,19 @@ function VistaPrincipal() {
         <tbody>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Nombre</td>
-            <td style={{ fontSize: '1.2em' }}>Actividad</td>
+            <td style={{ fontSize: '1.2em' }}>{actividad && actividad.nombre}</td>
             </tr>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Descripción</td>
-            <td style={{ fontSize: '1.2em' }}>blablabla</td>
+            <td style={{ fontSize: '1.2em' }}>{actividad && actividad.descripcion}</td>
             </tr>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Disponibilidad</td>
-            <td style={{ fontSize: '1.2em' }}>04/12/2024</td>
+            <td style={{ fontSize: '1.2em' }}>{actividad && actividad.disponibilidad}</td>
             </tr>
             <tr>
             <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Precio</td>
-            <td style={{ fontSize: '1.2em' }}>5€</td>
+            <td style={{ fontSize: '1.2em' }}>{actividad && actividad.precio}</td>
             </tr>
           </tbody>
         </table>
