@@ -71,14 +71,18 @@ const VistaMapa = () => {
   }, []);
 
   return (
+    <div className="fondo-vistamapa" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', height: 'auto' }}>
       <div className="botones-vistamapa">
         <Link to="/">
           <button className="round-button">LogOut</button>
         </Link>
+        <Link to="/misreservas">
+          <button className="round-button">Mis Reservas</button>
+        </Link>
       </div>
       <div style={{ width: '35%', padding: '20px' }}>
-        <div className="busqueda" style={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
+        {/* <div className="busqueda" style={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
           <input
             type="text"
             placeholder="Buscar establecimiento"
@@ -86,8 +90,7 @@ const VistaMapa = () => {
             onChange={(e) => setBusqueda(e.target.value)}
             style={{ width: '40%' }}
           />
-          {/* lógica de búsqueda */}
-        </div>
+        </div> */}
         {ubicacionSeleccionada && (
           <div className="table-container">
             <table className="tabla">
@@ -116,7 +119,7 @@ const VistaMapa = () => {
                 </tr>
                 <tr>
                   <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
-                  <td style={{ fontSize: '1.5em' }}>{establecimiento.correo}</td>
+                  <td style={{ fontSize: '1.5em' }}>{establecimiento.email}</td>
                 </tr>
               </tbody>
             </table>
@@ -126,6 +129,7 @@ const VistaMapa = () => {
       <div style={{ width: '35%', marginTop: '100px' }}>
         <div ref={mapRef} style={{ width: '100%', height: '450px' }}></div>
       </div>
+    </div>
     </div>
   );
 };

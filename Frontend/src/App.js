@@ -16,7 +16,8 @@ import Detalle from './Vista_Dueño_Mascota/Detalle';
 import AñadirActividad from './Vista_Dueño_Establecimiento/AñadirActividad';
 import AñadirEstablecimiento from './Vista_Dueño_Establecimiento/AñadirEstablecimiento';
 import Editar from './Vista_Dueño_Establecimiento/Editar';
-
+import MisReservas from './Vista_Dueño_Mascota/MisReservas';
+import ReservaEst from './Vista_Dueño_Establecimiento/ReservaEst'
 function App() {
 
 	return (
@@ -37,6 +38,8 @@ function App() {
 			  <Route path="/editar" element={<Editar />} />
 			  <Route path="/detalle" element={<Detalle />} />
 			  <Route path="*" element={<NoMatch />} />
+			  <Route path="/misreservas" element={<MisReservas />} />
+			  <Route path="/reservasEst" element={<ReservaEst />} />
 			</Routes>
 		  </div>
 		  <Footer />

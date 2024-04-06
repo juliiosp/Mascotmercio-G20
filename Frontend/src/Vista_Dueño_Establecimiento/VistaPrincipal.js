@@ -68,8 +68,8 @@ function VistaPrincipal() {
     <Link to="/anadirAct">
     <button className="round-button">Añadir Actividad</button>
     </Link>
-    <Link to="/editar">
-    <button className="round-button">Editar</button>
+    <Link to="/reservasEst">
+    <button className="round-button">Reservas</button>
     </Link>
     <Link to="/">
     <button className="round-button">LogOut</button>
