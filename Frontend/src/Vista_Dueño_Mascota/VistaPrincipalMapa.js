@@ -6,6 +6,25 @@ const VistaMapa = () => {
   const mapRef = useRef(null); // Referencia al elemento del mapa
   const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState(null);
   const [busqueda, setBusqueda] = useState('');
+  const [establecimiento, setEstablecimiento] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/establecimientos/1');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setEstablecimiento(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   useEffect(() => {
     // Función para cargar el mapa
@@ -85,19 +104,19 @@ const VistaMapa = () => {
                 </tr>*/}
                 <tr>
                   <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
-                  <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.title}</td>
+                  <td style={{ fontSize: '1.5em' }}>{establecimiento.nombre}</td>
                 </tr>
                 <tr>
                   <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Teléfono</td>
-                  <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.telefono}</td>
+                  <td style={{ fontSize: '1.5em' }}>{establecimiento.telefono}</td>
                 </tr>
                 <tr>
                   <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Dirección</td>
-                  <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.direccion}</td>
+                  <td style={{ fontSize: '1.5em' }}>{establecimiento.direccion}</td>
                 </tr>
                 <tr>
                   <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
-                  <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.correo}</td>
+                  <td style={{ fontSize: '1.5em' }}>{establecimiento.correo}</td>
                 </tr>
               </tbody>
             </table>
