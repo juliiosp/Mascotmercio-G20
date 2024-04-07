@@ -16,14 +16,16 @@ const VistaMapa = () => {
         }
         const establecimientos = await response.json();
 
-        // Definir manualmente las ubicaciones con información de establecimientos
-        const ubicacionesManual = [
-          {lat: 40.4203, lng: -3.7058, establecimiento: establecimientos[0]},
-          {lat: 40.4003, lng: -3.6958, establecimiento: establecimientos[1]},
-          // Agrega más ubicaciones aquí si es necesario
-        ];
+        // Convertir direcciones a coordenadas
+        const ubicacionesGeocodificadas = await Promise.all(
+          establecimientos.map(async (establecimiento) => {
+            const direccion = establecimiento.direccion;
+            const coordenadas = await obtenerCoordenadas(direccion);
+            return { lat: coordenadas.lat, lng: coordenadas.lng, establecimiento };
+          })
+        );
 
-        setUbicaciones(ubicacionesManual);
+        setUbicaciones(ubicacionesGeocodificadas);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -31,6 +33,18 @@ const VistaMapa = () => {
 
     fetchData();
   }, []);
+
+  const obtenerCoordenadas = async (direccion) => {
+    const apiKey = 'AIzaSyB-2N2iclyLmO1o3q4H_rqfi0LuVqjhMj0'; // Reemplaza TU_API_KEY con tu propia API Key de Google Maps
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${direccion}&key=${apiKey}`);
+    const data = await response.json();
+    if (data.results && data.results.length > 0) {
+      const location = data.results[0].geometry.location;
+      return { lat: location.lat, lng: location.lng };
+    } else {
+      throw new Error('No se pudo encontrar la ubicación');
+    }
+  };
 
   useEffect(() => {
     // Función para cargar el mapa

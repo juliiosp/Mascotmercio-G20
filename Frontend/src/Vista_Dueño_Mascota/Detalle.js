@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './Detalle.css'; 
 
-function VistaPrincipal() {
+function Detalle() {
 
   const [establecimiento, setEstablecimiento] = useState(null);
   useEffect(() => {
@@ -101,4 +101,4 @@ function VistaPrincipal() {
   );
 }
 
-export default VistaPrincipal;
+export default Detalle;

@@ -53,7 +53,7 @@ const Reserva = () => {
           <label htmlFor="nummascotas">Nº de mascotas:</label>
           <input type="text" id="nummascotas" name="nummascotas" value={formData.nmascotas} onChange={handleChange} />
         </div>
-        <button type="submit">Subir</button>
+        <button type="submit">Reservar</button>
         <Link to="/duenoMascota">
           <button className="round-button">Volver</button>
         </Link>  
