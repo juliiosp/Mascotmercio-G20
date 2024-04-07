@@ -1,57 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Registro.css'; // Importa los estilos CSS
+import './Registro.css';
 
-const Registro = () => {
+const Reserva = () => {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    direccion: '',
+    telefono: '',
+    email: '',
+    contraseña: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:8080/api/duenoMascota', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Puedes redirigir a la página principal o a otra página después de enviar el formulario
+      // Aquí te redirijo a la página de VistaPrincipal
+      window.location.href = '/login';
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
   return (
     <div className="fondo-registro" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
-      <Link to="/login" className="login-link">Volver</Link>
-      <h1>Crea tu cuenta</h1>
-      <form>
+      <h1>Crea tu cuenta!</h1>
+      <form className="reserva-formulario" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Nombre:</label>
-          <input
-            type="text"
-            id="name"
-            required
-          />
+          <label htmlFor="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} />
         </div>
         <div className="form-group">
-          <label htmlFor="name">Dirección:</label>
-          <input
-            type="text"
-            id="direccion"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="name">Telefono:</label>
-          <input
-            type="text"
-            id="telefono"
-            required
-          />
+          <label htmlFor="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" value={formData.direccion} onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="email">Correo Electrónico:</label>
-          <input
-            type="email"
-            id="email"
-            required
-          />
+          <input type="text" id="email" name="email" value={formData.email} onChange={handleChange} />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="password"
-            id="password"
-            required
-          />
+          <label htmlFor="telefono">Teléfono:</label>
+          <input type="text" id="telefono" name="telefono" value={formData.telefono} onChange={handleChange} />
         </div>
-        <button className="registrar" type="button">Registrarse</button>
+        <div className="form-group">
+          <label htmlFor="contraseña">Contraseña:</label>
+          <input type="text" id="contraseña" name="contraseña" value={formData.numpersonas} onChange={handleChange} />
+        </div>
+        <button type="submit">Crear cuenta</button>
+        <Link to="/duenoMascota">
+          <button className="round-button">Volver</button>
+        </Link>  
       </form>
     </div>
   );
 };
 
-export default Registro;
+export default Reserva;
+
