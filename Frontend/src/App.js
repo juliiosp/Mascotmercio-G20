@@ -19,6 +19,7 @@ import Editar from './Vista_Dueño_Establecimiento/Editar';
 import MisReservas from './Vista_Dueño_Mascota/MisReservas';
 import ReservaEst from './Vista_Dueño_Establecimiento/ReservaEst'
 import MiPerfil from './Vista_Dueño_Mascota/Perfil';
+import EditarPerfil from './Vista_Dueño_Mascota/EditarPerfil';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
 			  <Route path="/misreservas" element={<MisReservas />} />
 			  <Route path="/reservasEst" element={<ReservaEst />} />
 			  <Route path="/perfil" element={<MiPerfil />} />
+			  <Route path="/editarPerfil" element={<EditarPerfil />} />
 			</Routes>
 		  </div>
 		  <Footer />
