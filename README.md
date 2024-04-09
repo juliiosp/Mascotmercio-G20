@@ -12,10 +12,10 @@ Para lanzar la aplicación, seguir los siguientes pasos:
 
 3) Instalar dependencias Frontend:
    ```bash 
-    .npm install
+    npm install
    ```
 
 4) Lanzar la web:
     ```bash 
-    .npm start
+    npm start
     ```
