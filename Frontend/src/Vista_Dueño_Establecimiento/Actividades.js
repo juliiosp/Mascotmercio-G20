@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Reserva.css';
+import './Actividades.css';
 
-function MisReservas() {
-  const [reservas, setReservas] = useState([]);
+function Actividades() {
+  const [actividades, setActividades] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/reservas');
+        const response = await fetch('http://localhost:8080/api/actividades');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setReservas(data);
+        setActividades(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -23,20 +23,21 @@ function MisReservas() {
   }, []);
 
   return (
-    <div className="fondo-vistaprincipal" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
+    <div className="fondo-actividades" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
       <div className="botones-vistaprincipal">
         <Link to="/duenoEstablecimiento">
           <button className="round-button">Volver</button>
         </Link>
       </div>
       <div className="card-cont">
-        {reservas.map((reserva, index) => (
+        {actividades.map((actividad, index) => (
           <div className="container" key={index} >
             <div className="card">
               <div className="text">
-                <p><span style={{ fontWeight: 'bold' }}>Fecha:</span> {reserva.fecha}</p>
-                <p><span style={{ fontWeight: 'bold' }}>Nº Personas:</span> {reserva.numpersonas}</p>
-                <p><span style={{ fontWeight: 'bold' }}>Nº Mascotas:</span> {reserva.nummascotas}</p>
+              <p><span style={{ fontWeight: 'bold' }}>Nombre:</span> {actividad.nombre}</p>
+              <p><span style={{ fontWeight: 'bold' }}>Descripción:</span> {actividad.descripcion}</p>
+              <p><span style={{ fontWeight: 'bold' }}>Disponibilidad:</span> {actividad.disponibilidad}</p>
+              <p><span style={{ fontWeight: 'bold' }}>Precio:</span> {actividad.precio}</p>
               </div>
             </div>
           </div>
@@ -46,4 +47,4 @@ function MisReservas() {
   );
 }
 
-export default MisReservas;
+export default Actividades;

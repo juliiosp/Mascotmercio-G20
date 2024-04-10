@@ -1,0 +1,48 @@
+/* PerfilEst.css */
+
+.fondo-perfil {
+  padding: 20px;
+  height: 600px;
+}
+
+.botones-perfil {
+  display: flex;
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  margin-bottom: 20px;
+}
+
+.round-button {
+  background-color: black; /* Color de fondo negro */
+  color: white; /* Color del texto blanco */
+  border: none;
+  border-radius: 50px; /* Bordes redondeados */
+  padding: 15px 30px;
+  margin-left: 10px; /* Espacio entre botones */
+}
+
+.table-container {
+  overflow-x: auto; /* Permite desplazar horizontalmente la tabla si es necesario */
+}
+
+.tabla {
+  border-collapse: collapse; /* Elimina los bordes de la tabla */
+  width: 100%;
+}
+
+.titulotabla {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.tabla td {
+  padding: 10px; /* Espacio interno de las celdas */
+  font-size: 1.5em;
+}
+
+.tabla tr:nth-child(even) {
+  background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+.tabla td:first-child {
+  font-weight: bold;
+}

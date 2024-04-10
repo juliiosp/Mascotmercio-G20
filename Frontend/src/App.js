@@ -15,11 +15,13 @@ import Reserva from './Vista_Dueño_Mascota/Reserva';
 import Detalle from './Vista_Dueño_Mascota/Detalle';
 import AñadirActividad from './Vista_Dueño_Establecimiento/AñadirActividad';
 import AñadirEstablecimiento from './Vista_Dueño_Establecimiento/AñadirEstablecimiento';
-import Editar from './Vista_Dueño_Establecimiento/Editar';
 import MisReservas from './Vista_Dueño_Mascota/MisReservas';
 import ReservaEst from './Vista_Dueño_Establecimiento/ReservaEst'
-import MiPerfil from './Vista_Dueño_Mascota/Perfil';
-import EditarPerfil from './Vista_Dueño_Mascota/EditarPerfil';
+import PerfilMasc from './Vista_Dueño_Mascota/PerfilMasc';
+import PerfilEst from './Vista_Dueño_Establecimiento/PerfilEst';
+import Actividades from './Vista_Dueño_Establecimiento/Actividades';
+import EditarPerfilEst from './Vista_Dueño_Establecimiento/EditarPerfilEst';
+import EditarPerfilMasc from './Vista_Dueño_Mascota/EditarPerfilMasc';
 
 function App() {
 
@@ -38,13 +40,15 @@ function App() {
 			  <Route path="/reserva" element={<Reserva />} />
 			  <Route path="/anadirEst" element={<AñadirEstablecimiento />} />
 			  <Route path="/anadirAct" element={<AñadirActividad />} />
-			  <Route path="/editar" element={<Editar />} />
 			  <Route path="/detalle" element={<Detalle />} />
 			  <Route path="*" element={<NoMatch />} />
 			  <Route path="/misreservas" element={<MisReservas />} />
 			  <Route path="/reservasEst" element={<ReservaEst />} />
-			  <Route path="/perfil" element={<MiPerfil />} />
-			  <Route path="/editarPerfil" element={<EditarPerfil />} />
+			  <Route path="/perfilMasc" element={<PerfilMasc />} />
+			  <Route path="/perfilEst" element={<PerfilEst />} />
+			  <Route path="/editarPerfilMasc" element={<EditarPerfilMasc />} />
+			  <Route path="/editarPerfilEst" element={<EditarPerfilEst />} />
+			  <Route path="/actividades" element={<Actividades />} />
 			</Routes>
 		  </div>
 		  <Footer />

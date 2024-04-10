@@ -1,82 +1,68 @@
-.table-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra horizontalmente */
-  margin-top: 50px;
-}
-
-.table-container {
-  background-color: rgba(235, 237, 237, 0.685); /* Fondo gris */
-  margin-bottom: 10px; /* Espacio entre la tabla principal y las tablas horizontales */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-}
-
-.horizontal-tables {
-  display: flex;
-  align-self: center;
-  margin-top: 30px;  
-  background-color: rgba(235, 237, 237, 0.685); /* Fondo gris */
-  margin-bottom: 10px; /* Espacio entre la tabla principal y las tablas horizontales */
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.horizontal-tables .tabla2 {
-  margin-right: 50px; /* Espacio entre las tablas horizontales */
-  border-collapse: collapse;
-}
-
-.tabla {
-  border-collapse: collapse;
-  border-radius: 5px;
-}
-
-.tabla td {
-  background-color: white;
-  border: 1px solid #ccc; /* Bordes grises */
-  padding: 8px;
-  height: 100%;
-  height: 100px;
-  width: 660px;
-  border-collapse: collapse;
-}
-
-.tabla2 td {
-  background-color: white;
-  border: 1px solid #ccc; /* Bordes grises */
-  height: 100%;
-  height: 70px;
-  width: 300px;
-  padding: 5px;
-  border-collapse: collapse;
-}
-
 .fondo-vistaprincipal {
-  padding: 10px;
-  height: auto;
-}
-
-.titulotabla {
-  font-weight: bold;
-  font-size: 1.4em;
-  float: left;
+  padding: 20px;
+  background: linear-gradient(to right, #93FAF6, #FFB1FF);
 }
 
 .botones-vistaprincipal {
   display: flex;
-  justify-content: right;
-  margin-top: 10px;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .round-button {
-  background-color: black;
-  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid black;
+  text-decoration: none;
+  color: black;
+}
+
+.card-cont {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container {
+  width: 30%;
+  margin-bottom: 20px;
+  flex: 0 0 calc(33.33% - 20px); /* Establece el ancho de cada tarjeta al 33.33% del contenedor y resta el espacio de padding */
+
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text {
+  font-size: 16px;
+}
+
+.text p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+.round-button-card {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #0c0c0c; /* Color de fondo */
   border: none;
-  border-radius: 50px;
-  padding: 15px 30px;
-  margin: 0 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
   cursor: pointer;
-  font-size: 1em;
 }

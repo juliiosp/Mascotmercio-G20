@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import './VistaPrincipal.css'; 
+import './VistaPrincipal.css';
 
 function VistaPrincipal() {
-  const [duenoEstablecimiento, setDuenoEstablecimiento] = useState(null);
+  const [establecimientos, setEstablecimientos] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/duenoEstablecimiento/1');
+        const response = await fetch('http://localhost:8080/api/establecimientos');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setDuenoEstablecimiento(data);
+        setEstablecimientos(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -23,124 +23,52 @@ function VistaPrincipal() {
     fetchData();
   }, []);
 
-  const [establecimiento, setEstablecimiento] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/api/establecimientos/1');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setEstablecimiento(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const [actividad, setActividad] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/api/actividades/1');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setActividad(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const cardFooter = (
+    <div className="botones-card">
+      <Link to="/anadirAct">
+        <button className="round-button-card">Añadir Actividad</button>
+      </Link>
+      <Link to="/actividades">
+        <button className="round-button-card">Actividades</button>
+      </Link>
+      <Link to="/reservasEst">
+        <button className="round-button-card">Reservas</button>
+      </Link>
+      <Link to="/reservasEst">
+        <button className="round-button-card">Editar</button>
+      </Link>
+    </div>
+  );
 
   return (
     <div className="fondo-vistaprincipal" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
-    <div className="botones-vistaprincipal">
-    <Link to="/anadirEst">
-    <button className="round-button">Añadir Establecimiento</button>
-    </Link>
-    <Link to="/anadirAct">
-    <button className="round-button">Añadir Actividad</button>
-    </Link>
-    <Link to="/reservasEst">
-    <button className="round-button">Reservas</button>
-    </Link>
-    <Link to="/">
-    <button className="round-button">LogOut</button>
-    </Link>
-    </div>
-    <div className="table-wrapper">
-      <div className="table-container">
-        <table className="tabla">
-        <caption className='titulotabla'>Usuario</caption>
-            <tbody>
-              <tr>
-                <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
-                <td style={{ fontSize: '1.5em' }}>{duenoEstablecimiento && duenoEstablecimiento.nombre}</td>
-              </tr>
-              <tr>
-                <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Teléfono</td>
-                <td style={{ fontSize: '1.5em' }}>{duenoEstablecimiento && duenoEstablecimiento.telefono}</td>
-              </tr>
-              <tr>
-                <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
-                <td style={{ fontSize: '1.5em' }}>{duenoEstablecimiento && duenoEstablecimiento.email}</td>
-              </tr>
-            </tbody>
-          </table>
+      <div className="botones-vistaprincipal">
+        <Link to="/anadirEst">
+          <button className="round-button">Añadir Establecimiento</button>
+        </Link>
+        <Link to="/perfilEst">
+          <button className="round-button">Mi Perfil</button>
+        </Link>
+        <Link to="/">
+          <button className="round-button">LogOut</button>
+        </Link>
       </div>
-      <div className="horizontal-tables">
-      <table className="tabla2">
-      <caption className='titulotabla'>Establecimiento</caption>
-        <tbody>
-            <tr>
-            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Nombre</td>
-            <td style={{ fontSize: '1.2em' }}>{establecimiento && establecimiento.nombre}</td>
-            </tr>
-            <tr>
-            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Teléfono</td>
-            <td style={{ fontSize: '1.2em' }}>{establecimiento && establecimiento.telefono}</td>
-            </tr>
-            <tr>
-            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Correo Electrónico</td>
-            <td style={{ fontSize: '1.2em' }}>{establecimiento && establecimiento.email}</td>
-            </tr>
-            <tr>
-            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Dirección</td>
-            <td style={{ fontSize: '1.2em' }}>{establecimiento && establecimiento.direccion}</td>
-            </tr>
-          </tbody>
-        </table>
-        <table className="tabla2">
-        <caption className='titulotabla'>Actividades</caption>
-        <tbody>
-            <tr>
-            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Nombre</td>
-            <td style={{ fontSize: '1.2em' }}>{actividad && actividad.nombre}</td>
-            </tr>
-            <tr>
-            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Descripción</td>
-            <td style={{ fontSize: '1.2em' }}>{actividad && actividad.descripcion}</td>
-            </tr>
-            <tr>
-            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Disponibilidad</td>
-            <td style={{ fontSize: '1.2em' }}>{actividad && actividad.disponibilidad}</td>
-            </tr>
-            <tr>
-            <td style={{ fontWeight: 'bold', fontSize: '1.2em' }}>Precio</td>
-            <td style={{ fontSize: '1.2em' }}>{actividad && actividad.precio}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="card-cont">
+        {establecimientos.map((establecimiento, index) => (
+          <div className="container" key={index} >
+            <div className="card">
+              <div className="text">
+              <p><span style={{ fontWeight: 'bold' }}>Nombre:</span> {establecimiento.nombre}</p>
+              <p><span style={{ fontWeight: 'bold' }}>Teléfono:</span> {establecimiento.telefono}</p>
+              <p><span style={{ fontWeight: 'bold' }}>Dirección:</span> {establecimiento.direccion}</p>
+              <p><span style={{ fontWeight: 'bold' }}>Correo Electrónico:</span> {establecimiento.email}</p>
+              </div>
+              {cardFooter}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-  </div>
   );
 }
 
