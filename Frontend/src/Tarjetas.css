@@ -1,4 +1,4 @@
-.container-card {
+.container-inicio {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -7,7 +7,7 @@
   width: 80%;
 }
 
-.card {
+.tarjetainicio {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -16,7 +16,7 @@
   width: 300px;
 }
 
-.card-image {
+.imagen {
   border-radius: 10px;
   display: block;
   margin: 0 auto;
@@ -24,7 +24,7 @@
   height: 200px;
 }
 
-.text {
+.texto {
   margin-top: 10px;
 }
 

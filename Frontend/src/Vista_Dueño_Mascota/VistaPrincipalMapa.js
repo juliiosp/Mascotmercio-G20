@@ -1,11 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './VistaPrincipalMapa.css';
+import Valorar from './Valorar';
 
 const VistaMapa = () => {
   const mapRef = useRef(null); // Referencia al elemento del mapa
   const [ubicaciones, setUbicaciones] = useState([]); // Lista de ubicaciones combinadas con información de establecimientos
   const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState(null);
+  const [valoraciones, setValoraciones] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +29,23 @@ const VistaMapa = () => {
         );
 
         setUbicaciones(ubicacionesGeocodificadas);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/valoraciones');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setValoraciones(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -96,7 +116,7 @@ const VistaMapa = () => {
         <Link to="/misreservas">
           <button className="round-button">Mis Reservas</button>
         </Link>
-        <Link to="/perfil">
+        <Link to="/perfilMasc">
           <button className="round-button">Mi Perfil</button>
         </Link>
       </div>
@@ -104,31 +124,35 @@ const VistaMapa = () => {
         <div style={{ width: '35%', padding: '20px' }}>
           {ubicacionSeleccionada && (
             <div className="table-container">
-              <table className="tabla">
-                <tbody>
-                  <tr>
-                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Nombre</td>
-                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.nombre}</td>
-                  </tr>
-                  <tr>
-                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Teléfono</td>
-                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.telefono}</td>
-                  </tr>
-                  <tr>
-                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Dirección</td>
-                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.direccion}</td>
-                  </tr>
-                  <tr>
-                    <td style={{ fontWeight: 'bold', fontSize: '1.5em' }}>Correo Electrónico</td>
-                    <td style={{ fontSize: '1.5em' }}>{ubicacionSeleccionada.email}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="card-cont">
+                <div className="container">
+                  <div className="card">
+                    <div className="text">
+                      <p><span style={{ fontWeight: 'bold' }}>Nombre:</span> {ubicacionSeleccionada.nombre}</p>
+                      <p><span style={{ fontWeight: 'bold' }}>Teléfono:</span> {ubicacionSeleccionada.telefono}</p>
+                      <p><span style={{ fontWeight: 'bold' }}>Dirección:</span> {ubicacionSeleccionada.direccion}</p>
+                      <p><span style={{ fontWeight: 'bold' }}>Correo Electrónico:</span> {ubicacionSeleccionada.email}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="botones-vistamapa">
                 <Link to="/detalle">
                   <button className="round-button">Ver Más</button>
                 </Link>
               </div>
+              <h2>Valoraciones</h2>
+              <table className="tabla">
+                <tbody>
+                  {valoraciones.map((valoracion, index) => (
+                    <tr key={index}>
+                      <td>{valoracion.calificacion}</td>
+                      <td>{valoracion.reseña}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <Valorar />
             </div>
           )}
         </div>

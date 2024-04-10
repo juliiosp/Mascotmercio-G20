@@ -1,0 +1,39 @@
+.fondo-actividades{
+    padding: 20px;
+    height: 800px;
+}
+  
+  .card-cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .container {
+    width: 30%;
+    margin-bottom: 20px;
+    flex: 0 0 calc(33.33% - 20px); /* Establece el ancho de cada tarjeta al 33.33% del contenedor y resta el espacio de padding */
+  
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text {
+    font-size: 16px;
+  }
+  
+  .text p {
+    margin: 5px 0;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      width: 100%;
+    }
+  }
