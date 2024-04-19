@@ -1,30 +1,46 @@
 package es.upm.dit.isst.mascotmercio.mascotmercioapi.models;
+
 import java.sql.Date;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table
 public class Reserva {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date fecha;
     private int numpersonas;
     private int nummascotas;
 
-    public Reserva(){
-        
+    @ManyToOne
+    @JoinColumn(name = "DUENO_MASCOTA")
+    DuenoMascota duenoMascota;
+
+    @ManyToOne
+    @JoinColumn(name = "ACTIVIDAD")
+    Actividad actividades;
+
+    public Reserva() {
+
     }
 
-    public Reserva(long id, Date fecha, int numpersonas, int nummascotas) {
+    public Reserva(DuenoMascota duenoMascota, Actividad actividad, long id, Date fecha, int numpersonas, int nummascotas) {
         this.id = id;
         this.fecha = fecha;
         this.numpersonas = numpersonas;
         this.nummascotas = nummascotas;
+        this.duenoMascota = duenoMascota;       
+        this.actividades = actividad;
     }
 
     public long getId() {
@@ -57,6 +73,22 @@ public class Reserva {
 
     public void setNummascotas(int nummascotas) {
         this.nummascotas = nummascotas;
+    }
+
+    public DuenoMascota getDuenoMascota() {
+        return duenoMascota;
+    }
+
+    public void setDuenoMascota(DuenoMascota duenoMascota) {
+        this.duenoMascota = duenoMascota;
+    }
+
+    public Actividad getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(Actividad actividades) {
+        this.actividades = actividades;
     }
 
 }

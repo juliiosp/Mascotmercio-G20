@@ -1,15 +1,19 @@
 package es.upm.dit.isst.mascotmercio.mascotmercioapi.models;
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table
 public class DuenoMascota {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private int telefono;
@@ -17,8 +21,14 @@ public class DuenoMascota {
     private String email;
     private String contraseña;
 
-    public DuenoMascota(){
-        
+    @OneToMany(mappedBy = "duenoMascota")
+    Set<Reserva> reservas;
+
+    @OneToMany(mappedBy = "duenoMascota")
+    Set<Valoracion> valoraciones;
+
+    public DuenoMascota() {
+
     }
 
     public DuenoMascota(Long id, String nombre, int telefono, String direccion, String email, String contraseña) {
