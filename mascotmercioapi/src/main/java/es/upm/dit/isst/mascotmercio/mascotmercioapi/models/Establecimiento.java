@@ -4,7 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Set;
 
 @Entity
 @Table
@@ -15,7 +19,17 @@ public class Establecimiento {
     private int telefono;
     private String direccion;
     private String email;
-        
+
+    @ManyToOne
+    @JoinColumn(name = "DUENO_ESTABLECIMIENTO", nullable = false)
+    DuenoEstablecimiento duenoEstablecimiento;
+
+    @OneToMany(mappedBy = "establecimiento")
+    Set<Actividad> actividades;
+
+    @OneToMany(mappedBy = "establecimiento")
+    Set<Valoracion> valoraciones;
+
     public Establecimiento(){
         }
 
