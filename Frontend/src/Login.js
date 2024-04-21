@@ -1,42 +1,50 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     if (!email || !password) {
       setError('Por favor, complete todos los campos.');
       return;
     }
-
+  
     try {
-      const response = await fetch('http://localhost:8080/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Error en la solicitud de inicio de sesión');
+      const responseMascota = fetch(`https://localhost:8443/api/duenoMascota?email=${email}&password=${password}`);
+      const responseEstablecimiento = fetch(`https://localhost:8443/api/duenoEstablecimiento?email=${email}&password=${password}`);
+  
+      const responses = await Promise.all([responseMascota, responseEstablecimiento]);
+  
+      const dataMascota = await responses[0].json();
+      const dataEstablecimiento = await responses[1].json();
+  
+      const userMascota = dataMascota.find(user => user.email === email);
+      const userEstablecimiento = dataEstablecimiento.find(user => user.email === email);
+  
+      if (userMascota || userEstablecimiento) {
+        const userId = userMascota ? userMascota.id : userEstablecimiento.id;
+        localStorage.setItem('userId', userId);
+        //esto de abajo borrarlo! solo para pruebas
+        console.log(`ID del usuario guardado en el almacenamiento local: ${userId}`);
+        // Navega a la ruta correspondiente dependiendo del tipo de usuario
+        navigate(userMascota ? '/duenoMascota' : '/duenoEstablecimiento');
+      } else {
+        throw new Error('Credenciales incorrectas');
       }
-
-      // Indicar al componente padre que el usuario está autenticado
-      setIsAuthenticated(true);
     } catch (error) {
       console.error('Error al iniciar sesión:', error.message);
-      setError('Error al iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
+      setError(error.message);
     }
   };
+  
+  
 
   return (
     <div className="fondo-login" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>

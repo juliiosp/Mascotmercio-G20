@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Registro.css';
 
-//Este registro debe ser el del dueño de mascota y el del dueño establecimiento debemos hacer una copia de esto y cambiar formulario y POST @juliiosp
-//Para facilicar la implementación xd
+//Esto es lo del registro establecimiento
 
 const Reserva = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +20,7 @@ const Reserva = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://localhost:8443/api/duenoMascota', {
+      const response = await fetch('https://localhost:8443/api/duenoEstablecimiento', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -46,10 +45,6 @@ const Reserva = () => {
         <div className="form-group">
           <label htmlFor="nombre">Nombre:</label>
           <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="direccion">Dirección:</label>
-          <input type="text" id="direccion" name="direccion" value={formData.direccion} onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="email">Correo Electrónico:</label>

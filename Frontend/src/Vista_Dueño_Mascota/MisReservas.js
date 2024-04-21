@@ -9,7 +9,9 @@ function MisReservas() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/reservas/1');
+        //Aqui debería ser el userId del usuario logueado o el id de la reserva?¿? @juliiosp
+        const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
+        const response = await fetch('http://localhost:8443/api/reservas/${userId}');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

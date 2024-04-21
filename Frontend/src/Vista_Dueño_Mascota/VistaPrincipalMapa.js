@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import './VistaPrincipalMapa.css';
 import Valorar from './Valorar';
 
+const handleLogout = () => {
+  localStorage.setItem('userId', undefined); // Resetea el valor del localStorage
+};
+
 const VistaMapa = () => {
   const mapRef = useRef(null); // Referencia al elemento del mapa
   const [ubicaciones, setUbicaciones] = useState([]); // Lista de ubicaciones combinadas con información de establecimientos
@@ -13,7 +17,7 @@ const VistaMapa = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/establecimientos');
+        const response = await fetch('http://localhost:8443/api/establecimientos');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -40,7 +44,7 @@ const VistaMapa = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/valoraciones');
+        const response = await fetch('http://localhost:8443/api/valoraciones');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -111,7 +115,7 @@ const VistaMapa = () => {
     <div className="fondo-vistamapa" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
       <div className="botones-vistamapa">
         <Link to="/">
-          <button className="round-button">LogOut</button>
+          <button className="round-button" onClick={handleLogout}>LogOut</button>
         </Link>
         <Link to="/misreservas">
           <button className="round-button">Mis Reservas</button>

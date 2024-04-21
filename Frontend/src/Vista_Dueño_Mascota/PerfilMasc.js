@@ -9,7 +9,8 @@ function MiPerfil() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/duenoMascota/1');
+        const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
+        const response = await fetch(`https://localhost:8443/api/duenoMascota/${userId}`); // Usar el ID del usuario
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
