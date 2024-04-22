@@ -10,28 +10,29 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     if (!email || !password) {
       setError('Por favor, complete todos los campos.');
       return;
     }
-
+  
     try {
-      const responseMascota = fetch(`https://localhost:8443/api/duenoMascota?email=${email}&password=${password}`);
-      const responseEstablecimiento = fetch(`https://localhost:8443/api/duenoEstablecimiento?email=${email}&password=${password}`);
-
-      const responses = await Promise.all([responseMascota, responseEstablecimiento]);
-
-      const dataMascota = await responses[0].json();
-      const dataEstablecimiento = await responses[1].json();
-
-      const userMascota = dataMascota.find(user => user.email === email);
-      const userEstablecimiento = dataEstablecimiento.find(user => user.email === email);
-
+      // Realiza las solicitudes al servidor para comprobar las credenciales
+      const responseMascota = await fetch(`https://localhost:8443/api/duenoMascota?email=${email}`);
+      const responseEstablecimiento = await fetch(`https://localhost:8443/api/duenoEstablecimiento?email=${email}`);
+  
+      // Convierte las respuestas a formato JSON
+      const dataMascota = await responseMascota.json();
+      const dataEstablecimiento = await responseEstablecimiento.json();
+  
+      // Verifica si el usuario es encontrado en alguna de las respuestas y si la contraseña coincide
+      const userMascota = dataMascota.find(user => user.email === email && user.contraseña === password);
+      const userEstablecimiento = dataEstablecimiento.find(user => user.email === email && user.contraseña === password);
+  
+      // Si se encuentra al menos un usuario con la contraseña correcta, procede con la autenticación
       if (userMascota || userEstablecimiento) {
         const userId = userMascota ? userMascota.id : userEstablecimiento.id;
         localStorage.setItem('userId', userId);
-        //esto de abajo borrarlo! solo para pruebas
         console.log(`ID del usuario guardado en el almacenamiento local: ${userId}`);
         // Navega a la ruta correspondiente dependiendo del tipo de usuario
         navigate(userMascota ? '/duenoMascota' : '/duenoEstablecimiento');
@@ -43,8 +44,6 @@ const Login = () => {
       setError(error.message);
     }
   };
-
-
 
   return (
 

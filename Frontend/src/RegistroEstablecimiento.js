@@ -55,7 +55,7 @@ const RegistroEstablecimiento = () => {
         </div>
         <div className="form-group">
           <label htmlFor="contraseña">Contraseña:</label>
-          <input type="text" id="contraseña" name="contraseña" value={formData.contraseña} onChange={handleChange} required/>
+          <input type="password" id="contraseña" name="contraseña" value={formData.contraseña} onChange={handleChange} required/>
         </div>
         <button type="submit">Crear cuenta</button>
         <Link to="/login">

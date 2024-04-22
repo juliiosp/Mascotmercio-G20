@@ -17,7 +17,7 @@ const Añadir = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/actividades', {
+      const response = await fetch('https://localhost:8443/api/actividades', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
