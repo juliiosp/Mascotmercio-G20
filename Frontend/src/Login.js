@@ -8,45 +8,52 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    const emailRegex = /\S+@\S+\.\S+/;
+    return emailRegex.test(email);
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
-  
-    if (!email || !password) {
+
+    if (!email.trim() || !password.trim()) {
       setError('Por favor, complete todos los campos.');
       return;
     }
-  
+
+    if (!validateEmail(email)) {
+      setError('Ingrese una dirección de correo electrónico válida.');
+      return;
+    }
+
     try {
-      // Realiza las solicitudes al servidor para comprobar las credenciales
-      const responseMascota = await fetch(`https://localhost:8443/api/duenoMascota?email=${email}`);
-      const responseEstablecimiento = await fetch(`https://localhost:8443/api/duenoEstablecimiento?email=${email}`);
-  
-      // Convierte las respuestas a formato JSON
+      const responseMascota = await fetch(`https://localhost:8443/api/duenoMascota?email=${encodeURIComponent(email)}`);
+      const responseEstablecimiento = await fetch(`https://localhost:8443/api/duenoEstablecimiento?email=${encodeURIComponent(email)}`);
+
+      if (!responseMascota.ok || !responseEstablecimiento.ok) {
+        throw new Error('Error al obtener los datos del usuario.');
+      }
+
       const dataMascota = await responseMascota.json();
       const dataEstablecimiento = await responseEstablecimiento.json();
   
-      // Verifica si el usuario es encontrado en alguna de las respuestas y si la contraseña coincide
       const userMascota = dataMascota.find(user => user.email === email && user.contraseña === password);
       const userEstablecimiento = dataEstablecimiento.find(user => user.email === email && user.contraseña === password);
   
-      // Si se encuentra al menos un usuario con la contraseña correcta, procede con la autenticación
       if (userMascota || userEstablecimiento) {
         const userId = userMascota ? userMascota.id : userEstablecimiento.id;
         localStorage.setItem('userId', userId);
-        console.log(`ID del usuario guardado en el almacenamiento local: ${userId}`);
-        // Navega a la ruta correspondiente dependiendo del tipo de usuario
         navigate(userMascota ? '/duenoMascota' : '/duenoEstablecimiento');
       } else {
         throw new Error('Credenciales incorrectas');
       }
     } catch (error) {
       console.error('Error al iniciar sesión:', error.message);
-      setError(error.message);
+      setError('Credenciales incorrectas');
     }
   };
 
   return (
-
     <div className="fondo-login" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
       <div className="right-corner-buttons">
         <Link to="/registroDuenoMasc">
@@ -66,6 +73,7 @@ const Login = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Ingrese su correo electrónico"
           />
         </div>
         <div className="form-group">
@@ -76,6 +84,7 @@ const Login = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Ingrese su contraseña"
           />
         </div>
         {error && <p className="error-message">{error}</p>}
