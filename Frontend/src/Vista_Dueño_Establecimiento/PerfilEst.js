@@ -8,7 +8,8 @@ function PerfilEst() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/duenoEstablecimiento/1');
+        const userId = localStorage.getItem('userId');
+        const response = await fetch(`https://localhost:8443/api/duenoEstablecimiento/${userId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

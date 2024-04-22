@@ -13,7 +13,8 @@ function EditarPerfil() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/duenoMascota/1');
+        const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
+        const response = await fetch(`https://localhost:8443/api/duenoMascota/${userId}`); // Usar el ID del usuario
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -50,7 +51,8 @@ function EditarPerfil() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/duenoMascota/1', {
+      const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
+      const response = await fetch(`https://localhost:8443/api/duenoMascota/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +65,7 @@ function EditarPerfil() {
       }
 
       // Redirigir a la página de perfil después de la actualización
-      window.location.href = '/perfil';
+      window.location.href = '/perfilMasc';
     } catch (error) {
       console.error('Error updating profile:', error);
     }
@@ -92,7 +94,7 @@ function EditarPerfil() {
         <button type="submit">Guardar Cambios</button>
       </form>
       <div className="botones-vistaprincipal">
-        <Link to="/mi-perfil">
+        <Link to="/perfilMasc">
           <button className="round-button">Cancelar</button>
         </Link>
       </div>

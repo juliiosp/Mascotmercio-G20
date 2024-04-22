@@ -22,6 +22,7 @@ import PerfilEst from './Vista_Dueño_Establecimiento/PerfilEst';
 import Actividades from './Vista_Dueño_Establecimiento/Actividades';
 import EditarPerfilEst from './Vista_Dueño_Establecimiento/EditarPerfilEst';
 import EditarPerfilMasc from './Vista_Dueño_Mascota/EditarPerfilMasc';
+import RegistroEstablecimiento from './RegistroEstablecimiento';
 
 function App() {
 
@@ -32,7 +33,8 @@ function App() {
 			<Routes>
 			  <Route path="/" element={<Inicio />} />
 			  <Route path="/login" element={<Login />} />
-			  <Route path="/registro" element={<Registro />} />
+			  <Route path="/registroDuenoMasc" element={<Registro />} />
+			  <Route path="/registroDuenoEst" element={<RegistroEstablecimiento />} />
 			  <Route path="/contacto" element={<Contacto />} />
 			  <Route path="/acerca" element={<Acerca />} />
 			  <Route path="/duenoMascota" element={<VistaPrincipalMapa />} />

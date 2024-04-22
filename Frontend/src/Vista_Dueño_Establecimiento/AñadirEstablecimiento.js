@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Añadir.css'; // Importa los estilos CSS
 
@@ -7,8 +7,13 @@ const Añadir = () => {
     nombre: '',
     telefono: '',
     direccion: '',
-    email: ''
+    email: '',
   });
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId'); // Obtener el ID del usuario del localStorage
+    setFormData({ ...formData, duenoMascota: userId }); // Asignar el ID del usuario al campo duenoMascota
+  }, []); // Ejecutar solo una vez al cargar el componente
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,7 +22,7 @@ const Añadir = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/establecimientos', {
+      const response = await fetch('https://localhost:8443/api/establecimientos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -29,8 +34,7 @@ const Añadir = () => {
         throw new Error('Network response was not ok');
       }
 
-      // Puedes redirigir a la página principal o a otra página después de enviar el formulario
-      // Aquí te redirijo a la página de VistaPrincipal
+      // Redirigir a la página de VistaPrincipal después de enviar el formulario
       window.location.href = '/duenoEstablecimiento';
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -43,20 +47,22 @@ const Añadir = () => {
       <form className="añadir-formulario" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} />
+          <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="telefono">Teléfono:</label>
-          <input type="text" id="telefono" name="telefono" value={formData.telefono} onChange={handleChange} />
+          <input type="text" id="telefono" name="telefono" value={formData.telefono} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="direccion">Dirección:</label>
-          <input type="text" id="direccion" name="direccion" value={formData.direccion} onChange={handleChange} />
+          <input type="text" id="direccion" name="direccion" value={formData.direccion} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="email">Correo Electrónico:</label>
           <input type="text" id="email" name="email" value={formData.email} onChange={handleChange} />
         </div>
+        {/* Input oculto para el campo duenoMascota, que se completa automáticamente */}
+        <input type="hidden" id="duenoMascota" name="duenoMascota" value={formData.duenoMascota} onChange={handleChange} required/>
         <button type="submit">Subir</button>
         <Link to="/duenoEstablecimiento">
           <button className="round-button">Volver</button>

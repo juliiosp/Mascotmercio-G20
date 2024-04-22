@@ -43,19 +43,19 @@ const Añadir = () => {
       <form className="añadir-formulario" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} />
+          <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="descripcion">Descripción:</label>
-          <input type="text" id="descripcion" name="descripcion" value={formData.descripcion} onChange={handleChange} />
+          <input type="text" id="descripcion" name="descripcion" value={formData.descripcion} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="disponibilidad">Disponibilidad:</label>
-          <input type="text" id="disponibilidad" name="disponibilidad" value={formData.disponibilidad} onChange={handleChange} />
+          <input type="text" id="disponibilidad" name="disponibilidad" value={formData.disponibilidad} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="precio">Precio:</label>
-          <input type="text" id="precio" name="precio" value={formData.precio} onChange={handleChange} />
+          <input type="text" id="precio" name="precio" value={formData.precio} onChange={handleChange} required/>
         </div>
         <button type="submit">Subir</button>
         <Link to="/duenoEstablecimiento">

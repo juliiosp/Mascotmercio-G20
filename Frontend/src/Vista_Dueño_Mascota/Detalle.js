@@ -27,7 +27,8 @@ function Detalle() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/actividades/1');
+        const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
+        const response = await fetch(`https://localhost:8443/api/actividades/${userId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

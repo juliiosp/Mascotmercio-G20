@@ -10,24 +10,24 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     if (!email || !password) {
       setError('Por favor, complete todos los campos.');
       return;
     }
-  
+
     try {
       const responseMascota = fetch(`https://localhost:8443/api/duenoMascota?email=${email}&password=${password}`);
       const responseEstablecimiento = fetch(`https://localhost:8443/api/duenoEstablecimiento?email=${email}&password=${password}`);
-  
+
       const responses = await Promise.all([responseMascota, responseEstablecimiento]);
-  
+
       const dataMascota = await responses[0].json();
       const dataEstablecimiento = await responses[1].json();
-  
+
       const userMascota = dataMascota.find(user => user.email === email);
       const userEstablecimiento = dataEstablecimiento.find(user => user.email === email);
-  
+
       if (userMascota || userEstablecimiento) {
         const userId = userMascota ? userMascota.id : userEstablecimiento.id;
         localStorage.setItem('userId', userId);
@@ -43,12 +43,20 @@ const Login = () => {
       setError(error.message);
     }
   };
-  
-  
+
+
 
   return (
+
     <div className="fondo-login" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
-      <Link to="/registro" className="register-button">Registrarse</Link>
+      <div className="right-corner-buttons">
+        <Link to="/registroDuenoMasc">
+          <button className="round-button" >Registro Dueño mascota</button>
+        </Link>
+        <Link to="/registroDuenoEst">
+          <button className="round-button">Registro Dueño establecimiento</button>
+        </Link>
+      </div>
       <h1>Inicia Sesión</h1>
       <form onSubmit={handleLogin}>
         <div className="form-group">

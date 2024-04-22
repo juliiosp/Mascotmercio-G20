@@ -5,22 +5,21 @@ import './EditarPerfilEst.css';
 
 function EditarPerfil() {
   const [perfil, setPerfil] = useState(null);
-  const [nombre, setNombre] = useState('');
-  const [direccion, setDireccion] = useState('');
+  const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/duenoEstablecimiento/1');
+        const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
+        const response = await fetch(`https://localhost:8443/api/duenoEstablecimiento/${userId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
         setPerfil(data);
         setNombre(data.nombre);
-        setDireccion(data.direccion);
         setEmail(data.email);
         setTelefono(data.telefono);
       } catch (error) {
@@ -35,10 +34,6 @@ function EditarPerfil() {
     setNombre(e.target.value);
   };
 
-  const handleDireccionChange = (e) => {
-    setDireccion(e.target.value);
-  };
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -50,12 +45,13 @@ function EditarPerfil() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/duenoEstablecimiento/1', {
+      const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
+      const response = await fetch(`https://localhost:8443/api/duenoEstablecimiento/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, direccion, email, telefono }),
+        body: JSON.stringify({ nombre, email, telefono }),
       });
 
       if (!response.ok) {
@@ -63,7 +59,7 @@ function EditarPerfil() {
       }
 
       // Redirigir a la página de perfil después de la actualización
-      window.location.href = '/duenoEstablecimiento';
+      window.location.href = '/perfilEst';
     } catch (error) {
       console.error('Error updating profile:', error);
     }

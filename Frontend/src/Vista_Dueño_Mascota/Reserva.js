@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRevalidator } from 'react-router-dom';
 import './Reserva.css';
 
 const Reserva = () => {
@@ -14,10 +14,12 @@ const Reserva = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/reservas', {
+      const response = await fetch('https://localhost:8443/api/reservas', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -43,16 +45,17 @@ const Reserva = () => {
       <form className="reserva-formulario" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="fecha">Fecha:</label>
-          <input type="date" id="fecha" name="fecha" value={formData.fecha} onChange={handleChange} />
+          <input type="date" id="fecha" name="fecha" value={formData.fecha} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="numpersonas">Nº de personas:</label>
-          <input type="text" id="numpersonas" name="numpersonas" value={formData.numpersonas} onChange={handleChange} />
+          <input type="text" id="numpersonas" name="numpersonas" value={formData.numpersonas} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="nummascotas">Nº de mascotas:</label>
-          <input type="text" id="nummascotas" name="nummascotas" value={formData.nmascotas} onChange={handleChange} />
+          <input type="text" id="nummascotas" name="nummascotas" value={formData.nmascotas} onChange={handleChange} required/>
         </div>
+        <input type="hidden" id="duenoMascota" name="duenoMascota" value={userId} onChange={handleChange} />
         <button type="submit">Reservar</button>
         <Link to="/duenoMascota">
           <button className="round-button">Volver</button>

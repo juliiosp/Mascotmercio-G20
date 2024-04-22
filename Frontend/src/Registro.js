@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Registro.css';
 
-//Este registro debe ser el del dueño de mascota y el del dueño establecimiento debemos hacer una copia de esto y cambiar formulario y POST @juliiosp
-//Para facilicar la implementación xd
 
-const Reserva = () => {
+const Registro = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     direccion: '',
@@ -45,26 +43,26 @@ const Reserva = () => {
       <form className="reserva-formulario" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} />
+          <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="direccion">Dirección:</label>
-          <input type="text" id="direccion" name="direccion" value={formData.direccion} onChange={handleChange} />
+          <input type="text" id="direccion" name="direccion" value={formData.direccion} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="email">Correo Electrónico:</label>
-          <input type="text" id="email" name="email" value={formData.email} onChange={handleChange} />
+          <input type="text" id="email" name="email" value={formData.email} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="telefono">Teléfono:</label>
-          <input type="text" id="telefono" name="telefono" value={formData.telefono} onChange={handleChange} />
+          <input type="text" id="telefono" name="telefono" value={formData.telefono} onChange={handleChange} required/>
         </div>
         <div className="form-group">
           <label htmlFor="contraseña">Contraseña:</label>
-          <input type="text" id="contraseña" name="contraseña" value={formData.contraseña} onChange={handleChange} />
+          <input type="text" id="contraseña" name="contraseña" value={formData.contraseña} onChange={handleChange} required/>
         </div>
         <button type="submit">Crear cuenta</button>
-        <Link to="/duenoMascota">
+        <Link to="/login">
           <button className="round-button">Volver</button>
         </Link>  
       </form>
@@ -72,4 +70,4 @@ const Reserva = () => {
   );
 };
 
-export default Reserva;
+export default Registro;

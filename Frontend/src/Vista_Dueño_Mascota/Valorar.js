@@ -22,7 +22,7 @@ function Valorar() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/valoraciones', {
+      const response = await fetch('https://localhost:8443/api/valoraciones', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

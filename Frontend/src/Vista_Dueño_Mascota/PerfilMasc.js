@@ -52,7 +52,7 @@ function MiPerfil() {
     <Link to="/duenoMascota">
     <button className="round-button">Volver</button>
     </Link>
-    <Link to="/editarPerfil">
+    <Link to="/editarPerfilMasc">
     <button className="round-button">Editar</button>
     </Link>
     </div>
