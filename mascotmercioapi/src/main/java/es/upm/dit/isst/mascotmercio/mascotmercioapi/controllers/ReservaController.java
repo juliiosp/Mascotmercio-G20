@@ -35,6 +35,14 @@ public class ReservaController {
         }
     }
 
+    // Obtener todas las reservas por dueño de mascota
+    @GetMapping("/dueno/{id}")
+    public ResponseEntity<Iterable<Reserva>> getReservasByDuenoId(@PathVariable Long id) {
+        Iterable<Reserva> reservas = reservaRepository.findByDuenoMascotaId(id);
+        return new ResponseEntity<>(reservas, HttpStatus.OK);
+    }
+
+
     // Crear una nueva reserva
     @PostMapping
     public ResponseEntity<Reserva> createReserva(@RequestBody Reserva reserva) {

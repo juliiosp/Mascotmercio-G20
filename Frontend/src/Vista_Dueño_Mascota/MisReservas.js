@@ -5,25 +5,28 @@ import './Reserva.css';
 
 function MisReservas() {
   const [reservas, setReservas] = useState(null);
-
+ //@juliiosp este fetch es para obtener el JSON sin [] para acceder a un solo objeto;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //Aqui debería ser el userId del usuario logueado o el id de la reserva?¿? @juliiosp
         const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
-        const response = await fetch(`https://localhost:8443/api/reservas/${userId}`);
+        const response = await fetch(`https://localhost:8443/api/reservas/dueno/${userId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setReservas(data);
+        // Acceder al primer elemento del arreglo si existe
+        const reserva = data.length > 0 ? data[0] : null;
+        setReservas(reserva);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
+  
 
   return (
     <div className="fondo-reserva" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
