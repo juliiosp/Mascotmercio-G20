@@ -10,7 +10,7 @@ function VistaPrincipal() {
     const fetchData = async () => {
       try {
         const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
-        const response = await fetch(`https://localhost:8443/api/establecimientos`);
+        const response = await fetch(`https://localhost:8443/api/establecimientos/dueno/${userId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

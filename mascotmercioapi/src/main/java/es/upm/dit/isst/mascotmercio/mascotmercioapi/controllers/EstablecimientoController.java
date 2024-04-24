@@ -34,6 +34,17 @@ public class EstablecimientoController {
         }
     }
 
+    // Obtener establecimientos por ID del dueño
+    @GetMapping("/dueno/{duenoId}")
+    public ResponseEntity<Iterable<Establecimiento>> getEstablecimientosByDuenoId(@PathVariable Long duenoId) {
+        Iterable<Establecimiento> establecimientos = establecimientoRepository.findByDuenoEstablecimientoId(duenoId);
+        if (establecimientos.iterator().hasNext()) {
+            return new ResponseEntity<>(establecimientos, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     // Crear un nuevo establecimiento
     @PostMapping
     public ResponseEntity<Establecimiento> createEstablecimiento(@RequestBody Establecimiento establecimiento) {
