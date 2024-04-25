@@ -35,7 +35,7 @@ function VistaPrincipal() {
       <Link to="/reservasEst">
         <button className="round-button-card">Reservas</button>
       </Link>
-      <Link to="/reservasEst">
+      <Link to="/editarEst">
         <button className="round-button-card">Editar</button>
       </Link>
     </div>

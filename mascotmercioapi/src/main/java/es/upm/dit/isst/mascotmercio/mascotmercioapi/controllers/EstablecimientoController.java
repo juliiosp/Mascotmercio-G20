@@ -59,8 +59,11 @@ public class EstablecimientoController {
         if (establecimientoOptional.isPresent()) {
             Establecimiento existingEstablecimiento = establecimientoOptional.get();
             // Aquí puedes agregar código para actualizar los campos necesarios
-            // Ejemplo: existingEstablecimiento.setNombre(establecimiento.getNombre());
-            Establecimiento updatedEstablecimiento = establecimientoRepository.save(existingEstablecimiento);
+            existingEstablecimiento.setNombre(establecimiento.getNombre());
+            existingEstablecimiento.setDireccion(establecimiento.getDireccion());
+            existingEstablecimiento.setTelefono(establecimiento.getTelefono());
+            existingEstablecimiento.setEmail(establecimiento.getEmail()); 
+           Establecimiento updatedEstablecimiento = establecimientoRepository.save(existingEstablecimiento);
             return new ResponseEntity<>(updatedEstablecimiento, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

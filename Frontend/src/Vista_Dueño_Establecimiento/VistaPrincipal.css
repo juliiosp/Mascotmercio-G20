@@ -1,6 +1,7 @@
 .fondo-vistaprincipal {
   padding: 20px;
   background: linear-gradient(to right, #93FAF6, #FFB1FF);
+  height: 600px;
 }
 
 .botones-vistaprincipal {

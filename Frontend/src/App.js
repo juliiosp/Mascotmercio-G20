@@ -23,6 +23,7 @@ import Actividades from './Vista_Dueño_Establecimiento/Actividades';
 import EditarPerfilEst from './Vista_Dueño_Establecimiento/EditarPerfilEst';
 import EditarPerfilMasc from './Vista_Dueño_Mascota/EditarPerfilMasc';
 import RegistroEstablecimiento from './RegistroEstablecimiento';
+import EditarEst from './Vista_Dueño_Establecimiento/EditarEst';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
 			  <Route path="/editarPerfilMasc" element={<EditarPerfilMasc />} />
 			  <Route path="/editarPerfilEst" element={<EditarPerfilEst />} />
 			  <Route path="/actividades" element={<Actividades />} />
+			  <Route path="/editarEst" element={<EditarEst />} />
 			</Routes>
 		  </div>
 		  <Footer />
