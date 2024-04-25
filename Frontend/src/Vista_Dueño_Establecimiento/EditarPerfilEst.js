@@ -8,6 +8,7 @@ function EditarPerfil() {
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
+  const [contraseña, setContraseña] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +23,7 @@ function EditarPerfil() {
         setNombre(data.nombre);
         setEmail(data.email);
         setTelefono(data.telefono);
+        setContraseña(data.contraseña);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -42,6 +44,10 @@ function EditarPerfil() {
     setTelefono(e.target.value);
   };
 
+  const handleContraseñaChange = (e) => {
+    setContraseña(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -51,7 +57,7 @@ function EditarPerfil() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, email, telefono }),
+        body: JSON.stringify({ nombre, email, telefono, contraseña }),
       });
 
       if (!response.ok) {
@@ -80,6 +86,10 @@ function EditarPerfil() {
         <div className="form-group">
           <label htmlFor="telefono">Teléfono:</label>
           <input type="tel" id="telefono" value={telefono} onChange={handleTelefonoChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="telefono">Contraseña:</label>
+          <input type="password" id="password" value={contraseña} onChange={handleContraseñaChange} />
         </div>
         <button type="submit">Guardar Cambios</button>
       </form>
