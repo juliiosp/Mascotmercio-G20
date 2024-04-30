@@ -19,26 +19,28 @@ public class Reserva {
     private Date fecha;
     private int numpersonas;
     private int nummascotas;
+    private Long actividadId;
+    private Long duenoMascotaId;
 
-    @ManyToOne
-    @JoinColumn(name = "DUENO_MASCOTA")
-    DuenoMascota duenoMascota;
+    // @ManyToOne
+    // @JoinColumn(name = "DUENO_MASCOTA")
+    // DuenoMascota duenoMascota;
 
-    @ManyToOne
-    @JoinColumn(name = "ACTIVIDAD")
-    Actividad actividades;
+    // @ManyToOne
+    // @JoinColumn(name = "ACTIVIDAD")
+    // Actividad actividades;
 
     public Reserva() {
 
     }
 
-    public Reserva(DuenoMascota duenoMascota, Actividad actividad, long id, Date fecha, int numpersonas, int nummascotas) {
+    public Reserva(Long duenoMascotaId, Long actividadId, Long id, Date fecha, int numpersonas, int nummascotas) {
         this.id = id;
         this.fecha = fecha;
         this.numpersonas = numpersonas;
         this.nummascotas = nummascotas;
-        this.duenoMascota = duenoMascota;       
-        this.actividades = actividad;
+        this.duenoMascotaId = duenoMascotaId;
+        this.actividadId = actividadId;
     }
 
     public long getId() {
@@ -73,20 +75,20 @@ public class Reserva {
         this.nummascotas = nummascotas;
     }
 
-    public DuenoMascota getDuenoMascota() {
-        return duenoMascota;
+    public Long getActividadId() {
+        return actividadId;
     }
 
-    public void setDuenoMascota(DuenoMascota duenoMascota) {
-        this.duenoMascota = duenoMascota;
+    public void setActividadId(Long actividadId) {
+        this.actividadId = actividadId;
     }
 
-    public Actividad getActividades() {
-        return actividades;
+    public Long getDuenoMascotaId() {
+        return duenoMascotaId;
     }
 
-    public void setActividades(Actividad actividades) {
-        this.actividades = actividades;
+    public void setDuenoMascotaId(Long duenoMascotaId) {
+        this.duenoMascotaId = duenoMascotaId;
     }
 
 }

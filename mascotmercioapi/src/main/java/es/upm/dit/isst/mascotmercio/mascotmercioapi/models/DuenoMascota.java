@@ -21,11 +21,11 @@ public class DuenoMascota {
     private String email;
     private String contraseña;
 
-    @OneToMany(mappedBy = "duenoMascota")
-    Set<Reserva> reservas;
+    // @OneToMany(mappedBy = "duenoMascota")
+    // Set<Reserva> reservas;
 
-    @OneToMany(mappedBy = "duenoMascota")
-    Set<Valoracion> valoraciones;
+    // @OneToMany(mappedBy = "duenoMascota")
+    // Set<Valoracion> valoraciones;
 
     public DuenoMascota() {
 

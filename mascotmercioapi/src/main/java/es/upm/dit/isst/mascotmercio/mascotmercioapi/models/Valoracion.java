@@ -20,27 +20,29 @@ public class Valoracion {
     private String foto;
     private int calificacion;
     private Date fecha;
+    private Long duenoMascotaId;
+    private Long establecimientoId;
 
-    @ManyToOne
-    @JoinColumn(name = "DUENO_MASCOTA")
-    DuenoMascota duenoMascota;
+    // @ManyToOne
+    // @JoinColumn(name = "DUENO_MASCOTA")
+    // DuenoMascota duenoMascota;
 
-    @ManyToOne
-    @JoinColumn(name = "ESTABLECIMIENTO")
-    Establecimiento establecimiento;
+    // @ManyToOne
+    // @JoinColumn(name = "ESTABLECIMIENTO")
+    // Establecimiento establecimiento;
 
     public Valoracion() {
 
     }
 
-    public Valoracion(Establecimiento establecimiento, DuenoMascota duenoMascota, long id, String reseña, String foto, int calificacion, Date fecha) {
+    public Valoracion(Long establecimientoId, Long duenoMascotaId, long id, String reseña, String foto, int calificacion, Date fecha) {
         this.id = id;
         this.reseña = reseña;
         this.foto = foto;
         this.calificacion = calificacion;
         this.fecha = fecha;
-        this.duenoMascota = duenoMascota;
-        this.establecimiento = establecimiento;
+        this.duenoMascotaId = duenoMascotaId;
+        this.establecimientoId = establecimientoId;
     }
 
     public long getId() {
@@ -83,20 +85,22 @@ public class Valoracion {
         this.fecha = fecha;
     }
 
-    public DuenoMascota getDuenoMascota() {
-        return duenoMascota;
+    public Long getDuenoMascotaId() {
+        return duenoMascotaId;
     }
 
-    public void setDuenoMascota(DuenoMascota duenoMascota) {
-        this.duenoMascota = duenoMascota;
+    public void setDuenoMascotaId(Long duenoMascotaId) {
+        this.duenoMascotaId = duenoMascotaId;
     }
 
-    public Establecimiento getEstablecimiento() {
-        return establecimiento;
+    public Long getEstablecimientoId() {
+        return establecimientoId;
     }
 
-    public void setEstablecimiento(Establecimiento establecimiento) {
-        this.establecimiento = establecimiento;
+    public void setEstablecimientoId(Long establecimientoId) {
+        this.establecimientoId = establecimientoId;
     }
+
+    
 
 }
