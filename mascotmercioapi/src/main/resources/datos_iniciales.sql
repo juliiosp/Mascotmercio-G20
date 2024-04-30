@@ -16,14 +16,14 @@ INSERT INTO DUENO_MASCOTA (nombre, telefono, direccion, email, contraseña) VALU
 ('Sandra Ruiz', 654789123, 'Camino Largo 987', 'sandra@example.com', 'sandrita'),
 ('Pablo García', 789321654, 'Paseo Corto 654', 'pablo@example.com', 'pablo456!');
 
-INSERT INTO ESTABLECIMIENTO (id, nombre, telefono, direccion, email, dueno_Establecimiento) VALUES
+INSERT INTO ESTABLECIMIENTO (id, nombre, telefono, direccion, email, dueno_Establecimiento_Id) VALUES
 (1, 'Peluquería Canina', 123456789, 'Calle Gran Vía, 1', 'info@peluqueria.es', 1),
 (2, 'Guardería Canina', 123456789, 'Calle Princesa, 2', 'info@guarderia.es', 2),
 (3, 'Veterinaria', 123456789, 'Calle Mayor, 3', 'info@veterinaria.es', 3),
 (4, 'Paseador de Perros', 123456789, 'Calle San Bernardo, 4', 'info@paseo.es', 4),
 (5, 'Vacunación', 123456789, 'Calle Moncloa, 5', 'info@vacunas.es', 5);
 
-INSERT INTO ACTIVIDAD (id, nombre, descripcion, disponibilidad, precio, establecimiento) VALUES
+INSERT INTO ACTIVIDAD (id, nombre, descripcion, disponibilidad, precio, establecimiento_Id) VALUES
 (1, 'Peluquería', 'Corte de pelo y baño', '12024-04-06', 100, 1),
 (2, 'Guardería', 'Cuidado de mascotas', '2024-04-07', 200, 2),
 (3, 'Paseo', 'Paseo de mascotas', '2024-04-08', 50, 3),

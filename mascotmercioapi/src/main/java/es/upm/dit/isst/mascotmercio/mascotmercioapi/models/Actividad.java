@@ -15,12 +15,12 @@ import jakarta.persistence.Table;
 @Table
 public class Actividad {
 
-    @OneToMany(mappedBy = "actividades")
-    Set<Reserva> reservas;
+    // @OneToMany(mappedBy = "actividades")
+    // Set<Reserva> reservas;
 
-    @ManyToOne
-    @JoinColumn(name = "ESTABLECIMIENTO", nullable = false)
-    Establecimiento establecimiento;
+    // @ManyToOne
+    // @JoinColumn(name = "ESTABLECIMIENTO", nullable = false)
+    // Establecimiento establecimiento;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,13 +28,15 @@ public class Actividad {
     private String descripcion;
     private Date disponibilidad;
     private int precio;
+    private Long establecimientoId;
 
-    public Actividad(long id, String nombre, String descripcion, Date disponibilidad, int precio) {
+    public Actividad(long id, String nombre, String descripcion, Date disponibilidad, int precio, Long establecimientoId) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.disponibilidad = disponibilidad;
         this.precio = precio;
+        this.establecimientoId = establecimientoId;
     }
 
     public Actividad(){
@@ -79,6 +81,14 @@ public class Actividad {
 
     public void setPrecio(int precio) {
         this.precio = precio;
+    }
+
+    public Long getEstablecimientoId() {
+        return establecimientoId;
+    }
+
+    public void setEstablecimientoId(Long establecimientoId) {
+        this.establecimientoId = establecimientoId;
     }
 
 }

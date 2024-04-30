@@ -19,26 +19,28 @@ public class Establecimiento {
     private int telefono;
     private String direccion;
     private String email;
+    private Long duenoEstablecimientoId;
 
-    @ManyToOne
-    @JoinColumn(name = "DUENO_ESTABLECIMIENTO", nullable = false)
-    DuenoEstablecimiento duenoEstablecimiento;
+    // @ManyToOne
+    // @JoinColumn(name = "duenoEstablecimiento", nullable = false)
+    // DuenoEstablecimiento duenoEstablecimiento;
 
-    @OneToMany(mappedBy = "establecimiento")
-    Set<Actividad> actividades;
+    // @OneToMany(mappedBy = "establecimiento")
+    // Set<Actividad> actividades;
 
-    @OneToMany(mappedBy = "establecimiento")
-    Set<Valoracion> valoraciones;
+    // @OneToMany(mappedBy = "establecimiento")
+    // Set<Valoracion> valoraciones;
 
     public Establecimiento(){
         }
 
-    public Establecimiento(Long id, String nombre, int telefono, String direccion, String email) {
+    public Establecimiento(Long id, String nombre, int telefono, String direccion, String email, Long duenoEstablecimientoId) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
         this.email = email;
+        this.duenoEstablecimientoId = duenoEstablecimientoId;
     }
 
     public long getId() {
@@ -79,5 +81,13 @@ public class Establecimiento {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Long getDuenoEstablecimientoId() {
+        return duenoEstablecimientoId;
+    }
+
+    public void setDuenoEstablecimientoId(Long duenoEstablecimientoId) {
+        this.duenoEstablecimientoId = duenoEstablecimientoId;
     }
 }

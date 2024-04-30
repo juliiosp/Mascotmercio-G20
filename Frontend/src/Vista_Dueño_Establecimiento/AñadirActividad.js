@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Añadir.css';
 
-const Añadir = () => {
+const AñadirActividad = () => {
   const [formData, setFormData] = useState({
     nombre: '',
-    telefono: '',
-    direccion: '',
-    email: '',
     descripcion: '', // Propiedad añadida
     disponibilidad: '', // Propiedad añadida
-    precio: '' // Propiedad añadida
+    precio: '',
+    establecimientoId: '', // Propiedad añadida
   });
+
+  useEffect(() => {
+    const id = localStorage.getItem('establecimientoSeleccionadoId');
+    console.log('UserID:', id); // Imprimir el valor de userID en la consola
+    setFormData(prevFormData => ({ ...prevFormData, establecimientoId: id })); // Asignar el ID del usuario al campo duenoEstablecimiento
+  }, []); // Ejecutar solo una vez al cargar el componente
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,7 +24,6 @@ const Añadir = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
       const response = await fetch('https://localhost:8443/api/actividades', {
         method: 'POST',
         headers: {
@@ -61,6 +64,7 @@ const Añadir = () => {
           <label htmlFor="precio">Precio:</label>
           <input type="text" id="precio" name="precio" value={formData.precio} onChange={handleChange} required/>
         </div>
+        <input type="" id="establecimientoId" name="establecimientoId" value={formData.establecimientoId} onChange={handleChange} required/>
         <button type="submit">Subir</button>
         <Link to="/duenoEstablecimiento">
           <button className="round-button">Volver</button>
@@ -70,4 +74,4 @@ const Añadir = () => {
   );
 };
 
-export default Añadir;
+export default AñadirActividad;

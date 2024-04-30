@@ -8,13 +8,13 @@ const Añadir = () => {
     telefono: '',
     direccion: '',
     email: '',
-    duenoEstablecimiento: '', // Agrega duenoEstablecimiento al estado inicial
+    duenoEstablecimientoId: '', // Agrega duenoEstablecimiento al estado inicial
   });
 
   useEffect(() => {
     const userId = localStorage.getItem('userId'); // Obtener el ID del usuario del localStorage
     console.log('UserID:', userId); // Imprimir el valor de userID en la consola
-    setFormData(prevFormData => ({ ...prevFormData, duenoEstablecimiento: userId })); // Asignar el ID del usuario al campo duenoEstablecimiento
+    setFormData(prevFormData => ({ ...prevFormData, duenoEstablecimientoId: userId })); // Asignar el ID del usuario al campo duenoEstablecimiento
   }, []); // Ejecutar solo una vez al cargar el componente
 
   const handleChange = (e) => {
@@ -64,8 +64,7 @@ const Añadir = () => {
           <label htmlFor="email">Correo Electrónico:</label>
           <input type="text" id="email" name="email" value={formData.email} onChange={handleChange} />
         </div>
-        {/* Input oculto para el campo duenoEstablecimiento, que se completa automáticamente */}
-        <input type="hidden" id="duenoEstablecimiento" name="duenoEstablecimiento" value={formData.duenoEstablecimiento} onChange={handleChange} required/>
+        <input type="hidden" id="duenoEstablecimientoId" name="duenoEstablecimientoId" value={formData.duenoEstablecimientoId} onChange={handleChange} required/>
         <button type="submit">Subir</button>
         <Link to="/duenoEstablecimiento">
           <button className="round-button">Volver</button>

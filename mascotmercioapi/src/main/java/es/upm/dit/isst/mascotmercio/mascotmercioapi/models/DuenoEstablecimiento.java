@@ -18,8 +18,8 @@ public class DuenoEstablecimiento {
     private String email;
     private String contraseña;
 
-    @OneToMany(mappedBy = "duenoEstablecimiento")
-    Set<Establecimiento> establecimientos;
+    // @OneToMany(mappedBy = "duenoEstablecimiento")
+    // Set<Establecimiento> establecimientos;
 
     public DuenoEstablecimiento(){
 
