@@ -7,7 +7,10 @@ const Añadir = () => {
     nombre: '',
     telefono: '',
     direccion: '',
-    email: ''
+    email: '',
+    descripcion: '', // Propiedad añadida
+    disponibilidad: '', // Propiedad añadida
+    precio: '' // Propiedad añadida
   });
 
   const handleChange = (e) => {
@@ -17,6 +20,7 @@ const Añadir = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
       const response = await fetch('https://localhost:8443/api/actividades', {
         method: 'POST',
         headers: {

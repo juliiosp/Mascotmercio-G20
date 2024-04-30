@@ -15,7 +15,7 @@ function EditarEst() {
     const fetchId = async () => {
       try {
         // Realizar una solicitud para obtener el ID
-        const response = await fetch('https://localhost:8443/api/establecimientos/id');
+        const response = await fetch('https://localhost:8443/api/establecimientos/1');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -48,7 +48,7 @@ function EditarEst() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://localhost:8443/api/establecimientos/${id}`, {
+      const response = await fetch('https://localhost:8443/api/establecimientos/1', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

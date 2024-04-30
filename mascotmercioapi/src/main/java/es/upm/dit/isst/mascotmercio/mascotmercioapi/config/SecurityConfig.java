@@ -26,6 +26,7 @@ public class SecurityConfig {
             //.cors(cors -> {cors.disable();})
             //Fijamos las autorizaciones a cada ruta de mi sistema (de lo más general a lo más específico)
             .authorizeHttpRequests(auth -> {
+                auth.requestMatchers("/**").permitAll();
                 //Permiso para entrar en la consola H2
                 auth.requestMatchers("/h2/**").permitAll(); 
                 auth.requestMatchers("/api/**").permitAll();

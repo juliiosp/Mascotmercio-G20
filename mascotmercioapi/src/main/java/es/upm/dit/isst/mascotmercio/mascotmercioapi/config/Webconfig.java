@@ -8,7 +8,8 @@ public class Webconfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
+        //registry.addMapping("/api/**") con este error de CORS
+        registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000") // Permitir solicitudes desde el origen del frontend
                 .allowedMethods("GET", "POST", "PUT", "DELETE"); // Permitir los métodos HTTP necesarios
     }

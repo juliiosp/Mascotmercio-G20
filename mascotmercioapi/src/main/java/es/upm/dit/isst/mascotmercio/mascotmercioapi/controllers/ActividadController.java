@@ -34,6 +34,12 @@ public class ActividadController {
         }
     }
 
+    @GetMapping("/establecimiento/{id}")
+    public ResponseEntity<Iterable<Actividad>> getActividadesByEstablecimientoId(@PathVariable Long id) {
+        Iterable<Actividad> actividades = actividadRepository.findByEstablecimientoId(id);
+        return new ResponseEntity<>(actividades, HttpStatus.OK);
+    }
+
     // Crear una nueva actividad
     @PostMapping
     public ResponseEntity<Actividad> createActividad(@RequestBody Actividad actividad) {

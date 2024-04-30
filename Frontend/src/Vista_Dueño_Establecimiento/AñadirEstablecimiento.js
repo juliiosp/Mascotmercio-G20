@@ -8,11 +8,13 @@ const Añadir = () => {
     telefono: '',
     direccion: '',
     email: '',
+    duenoEstablecimiento: '', // Agrega duenoEstablecimiento al estado inicial
   });
 
   useEffect(() => {
     const userId = localStorage.getItem('userId'); // Obtener el ID del usuario del localStorage
-    setFormData({ ...formData, duenoMascota: userId }); // Asignar el ID del usuario al campo duenoMascota
+    console.log('UserID:', userId); // Imprimir el valor de userID en la consola
+    setFormData(prevFormData => ({ ...prevFormData, duenoEstablecimiento: userId })); // Asignar el ID del usuario al campo duenoEstablecimiento
   }, []); // Ejecutar solo una vez al cargar el componente
 
   const handleChange = (e) => {
@@ -21,6 +23,7 @@ const Añadir = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData); // Imprimir formData en la consola antes de enviar la solicitud POST
     try {
       const response = await fetch('https://localhost:8443/api/establecimientos', {
         method: 'POST',
@@ -61,8 +64,8 @@ const Añadir = () => {
           <label htmlFor="email">Correo Electrónico:</label>
           <input type="text" id="email" name="email" value={formData.email} onChange={handleChange} />
         </div>
-        {/* Input oculto para el campo duenoMascota, que se completa automáticamente */}
-        <input type="hidden" id="duenoMascota" name="duenoMascota" value={formData.duenoMascota} onChange={handleChange} required/>
+        {/* Input oculto para el campo duenoEstablecimiento, que se completa automáticamente */}
+        <input type="hidden" id="duenoEstablecimiento" name="duenoEstablecimiento" value={formData.duenoEstablecimiento} onChange={handleChange} required/>
         <button type="submit">Subir</button>
         <Link to="/duenoEstablecimiento">
           <button className="round-button">Volver</button>

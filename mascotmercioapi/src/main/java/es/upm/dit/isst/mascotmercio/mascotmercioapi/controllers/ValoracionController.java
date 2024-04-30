@@ -1,5 +1,6 @@
 package es.upm.dit.isst.mascotmercio.mascotmercioapi.controllers;
 
+import es.upm.dit.isst.mascotmercio.mascotmercioapi.models.Establecimiento;
 import es.upm.dit.isst.mascotmercio.mascotmercioapi.models.Valoracion;
 import es.upm.dit.isst.mascotmercio.mascotmercioapi.repository.ValoracionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,16 @@ public class ValoracionController {
         Optional<Valoracion> valoracionOptional = valoracionRepository.findById(id);
         if (valoracionOptional.isPresent()) {
             return new ResponseEntity<>(valoracionOptional.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    // Obtener valoraciones por ID del establecimiento
+    @GetMapping("/establecimiento/{establecimientoId}")
+    public ResponseEntity<Iterable<Valoracion>> getValoracionesByEstablecimientoId(@PathVariable Long establecimientoId) {
+        Iterable<Valoracion> valoraciones = valoracionRepository.findValoracionesByEstablecimientoId(establecimientoId);
+        if (valoraciones.iterator().hasNext()) {
+            return new ResponseEntity<>(valoraciones, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

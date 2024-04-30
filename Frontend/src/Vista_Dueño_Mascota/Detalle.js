@@ -9,7 +9,9 @@ function Detalle() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/establecimientos/1');
+        // Obtener el ID del establecimiento seleccionado del localStorage
+        const establecimientoId = localStorage.getItem('establecimientoSeleccionadoId');
+        const response = await fetch(`https://localhost:8443/api/establecimientos/${establecimientoId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -28,17 +30,23 @@ function Detalle() {
     const fetchData = async () => {
       try {
         const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
-        const response = await fetch(`https://localhost:8443/api/actividades/${userId}`);
+        const establecimientoId = localStorage.getItem('establecimientoSeleccionadoId');
+        const response = await fetch(`https://localhost:8443/api/actividades/establecimiento/${establecimientoId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setActividad(data);
+        
+        // Verificar si hay datos
+        if(data.length > 0) {
+          // Establecer el primer elemento del array como el estado de la actividad
+          setActividad(data[0]);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-
+  
     fetchData();
   }, []);
 

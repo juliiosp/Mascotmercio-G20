@@ -44,7 +44,12 @@ const VistaMapa = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8443/api/valoraciones');
+        const establecimientoId = localStorage.getItem('establecimientoSeleccionadoId');
+        if (!establecimientoId) {
+          console.log('No se encontró un ID de establecimiento en el localStorage');
+          return; // Si no hay un ID de establecimiento, detener la ejecución de fetchData
+        }
+        const response = await fetch(`https://localhost:8443/api/valoraciones/establecimiento/${establecimientoId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -54,9 +59,9 @@ const VistaMapa = () => {
         console.error('Error fetching data:', error);
       }
     };
-
+  
     fetchData();
-  }, []);
+  }, [localStorage.getItem('establecimientoSeleccionadoId')]); // Agregar establecimientoId al array de dependencias
 
   const obtenerCoordenadas = async (direccion) => {
     const apiKey = 'AIzaSyB-2N2iclyLmO1o3q4H_rqfi0LuVqjhMj0'; // Reemplaza TU_API_KEY con tu propia API Key de Google Maps
@@ -93,6 +98,11 @@ const VistaMapa = () => {
         marker.addListener('click', () => {
           // Actualizar el estado con la información de la ubicación seleccionada
           setUbicacionSeleccionada(establecimiento);
+          // Guardar el ID del establecimiento seleccionado en el localStorage
+          localStorage.setItem('establecimientoSeleccionadoId', establecimiento.id);
+          // Mostrar el ID del establecimiento seleccionado en la consola
+          console.log('ID del establecimiento seleccionado:', establecimiento.id);
+
         });
       });
     };

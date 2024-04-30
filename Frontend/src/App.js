@@ -53,6 +53,7 @@ function App() {
 			  <Route path="/editarPerfilEst" element={<EditarPerfilEst />} />
 			  <Route path="/actividades" element={<Actividades />} />
 			  <Route path="/editarEst" element={<EditarEst />} />
+			  
 			</Routes>
 		  </div>
 		  <Footer />
