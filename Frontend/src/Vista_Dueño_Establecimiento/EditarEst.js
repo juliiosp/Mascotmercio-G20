@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import './EditarPerfilEst.css'; 
+import './EditarPerfilEst.css';
 
 function EditarEst() {
   const [establecimiento, setEstablecimientos] = useState(null);
@@ -9,18 +9,22 @@ function EditarEst() {
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [direccion, setDireccion] = useState('');
-  const [id, setId] = useState('');
-
+ 
   useEffect(() => {
     const fetchId = async () => {
       try {
-        // Realizar una solicitud para obtener el ID
-        const response = await fetch('https://localhost:8443/api/establecimientos/1');
+        //CARGAR BIEN EL ID DE ESTABLECIMIENTO PARA EDITAR EL ESTABLECIMIENTO POR SU ID
+        const establecimientoId = localStorage.getItem('establecimientoSeleccionadoId');
+        const response = await fetch(`https://localhost:8443/api/establecimientos/${establecimientoId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setId(data.id); // Actualizar el ID en el estado local
+        setEstablecimientos(data);
+        setNombre(data.nombre);
+        setEmail(data.email);
+        setTelefono(data.telefono);
+        setDireccion(data.direccion);
       } catch (error) {
         console.error('Error fetching ID:', error);
       }
@@ -48,12 +52,13 @@ function EditarEst() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://localhost:8443/api/establecimientos/1', {
+      const establecimientoId = localStorage.getItem('establecimientoSeleccionadoId');
+      const response = await fetch(`https://localhost:8443/api/establecimientos/${establecimientoId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, email, telefono, direccion}),
+        body: JSON.stringify({ nombre, email, telefono, direccion }),
       });
 
       if (!response.ok) {

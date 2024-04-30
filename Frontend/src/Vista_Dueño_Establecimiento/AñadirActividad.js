@@ -12,6 +12,7 @@ const AñadirActividad = () => {
   });
 
   useEffect(() => {
+    //USAR ID DE ESTABLECIMENTO SELECCIONADO
     const id = localStorage.getItem('establecimientoSeleccionadoId');
     console.log('UserID:', id); // Imprimir el valor de userID en la consola
     setFormData(prevFormData => ({ ...prevFormData, establecimientoId: id })); // Asignar el ID del usuario al campo duenoEstablecimiento

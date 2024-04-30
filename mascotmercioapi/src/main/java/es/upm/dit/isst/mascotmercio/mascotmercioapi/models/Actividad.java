@@ -30,7 +30,7 @@ public class Actividad {
     private int precio;
     private Long establecimientoId;
 
-    public Actividad(long id, String nombre, String descripcion, Date disponibilidad, int precio, Long establecimientoId) {
+    public Actividad(Long id, String nombre, String descripcion, Date disponibilidad, int precio, Long establecimientoId) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -90,5 +90,4 @@ public class Actividad {
     public void setEstablecimientoId(Long establecimientoId) {
         this.establecimientoId = establecimientoId;
     }
-
 }

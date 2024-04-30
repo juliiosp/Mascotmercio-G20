@@ -8,6 +8,7 @@ function Actividades() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //CARGAR LAS ACTIVIDADES POR EL ID DE ESTABLECIMIENTO Y NO DE ID DE USUARIO
         const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
         const response = await fetch(`https://localhost:8443/api/actividades/establecimiento/${userId}`);
         if (!response.ok) {
