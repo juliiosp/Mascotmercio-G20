@@ -35,7 +35,6 @@ public class Establecimiento {
         }
 
     public Establecimiento(Long id, String nombre, int telefono, String direccion, String email, Long duenoEstablecimientoId) {
-        this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
