@@ -30,8 +30,7 @@ public class Actividad {
     private int precio;
     private Long establecimientoId;
 
-    public Actividad(Long id, String nombre, String descripcion, Date disponibilidad, int precio, Long establecimientoId) {
-        this.id = id;
+    public Actividad(String nombre, String descripcion, Date disponibilidad, int precio, Long establecimientoId) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.disponibilidad = disponibilidad;

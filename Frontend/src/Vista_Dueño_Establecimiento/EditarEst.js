@@ -9,12 +9,12 @@ function EditarEst() {
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [direccion, setDireccion] = useState('');
- 
+  
   useEffect(() => {
     const fetchId = async () => {
       try {
-        //CARGAR BIEN EL ID DE ESTABLECIMIENTO PARA EDITAR EL ESTABLECIMIENTO POR SU ID
-        const establecimientoId = localStorage.getItem('establecimientoSeleccionadoId');
+        const establecimientoId = localStorage.getItem('establecimientoId');
+        console.log('Establecimiento ID:', establecimientoId);
         const response = await fetch(`https://localhost:8443/api/establecimientos/${establecimientoId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -29,10 +29,10 @@ function EditarEst() {
         console.error('Error fetching ID:', error);
       }
     };
-
+  
     fetchId();
-  }, []);
-
+  }, [localStorage.getItem('establecimientoId')]); // Escuchar los cambios en el establecimientoId almacenado en el localStorage
+  
   const handleNombreChange = (e) => {
     setNombre(e.target.value);
   };
@@ -52,8 +52,9 @@ function EditarEst() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const establecimientoId = localStorage.getItem('establecimientoSeleccionadoId');
-      const response = await fetch(`https://localhost:8443/api/establecimientos/${establecimientoId}`, {
+      const id = localStorage.getItem('establecimientoId'); // Cambiado a 'establecimientoId'
+      console.log('Establecimiento ID:', id); // Imprimir el valor de establecimientoId en la consola
+      const response = await fetch(`https://localhost:8443/api/establecimientos/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

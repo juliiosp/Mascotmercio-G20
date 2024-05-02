@@ -24,22 +24,10 @@ function VistaPrincipal() {
     fetchData();
   }, []);
 
-  const cardFooter = (
-    <div className="botones-card">
-      <Link to="/anadirAct">
-        <button className="round-button-card">Añadir Actividad</button>
-      </Link>
-      <Link to="/actividades">
-        <button className="round-button-card">Actividades</button>
-      </Link>
-      <Link to="/reservasEst">
-        <button className="round-button-card">Reservas</button>
-      </Link>
-      <Link to="/editarEst">
-        <button className="round-button-card">Editar</button>
-      </Link>
-    </div>
-  );
+  const handleActividadesClick = (id) => {
+    localStorage.setItem('establecimientoId', id);
+    console.log('Establecimiento ID guardado:', id); // Log the saved id
+  };
 
   return (
     <div className="fondo-vistaprincipal" style={{ background: 'linear-gradient(to right, #93FAF6, #FFB1FF)' }}>
@@ -64,7 +52,20 @@ function VistaPrincipal() {
               <p><span style={{ fontWeight: 'bold' }}>Dirección:</span> {establecimiento.direccion}</p>
               <p><span style={{ fontWeight: 'bold' }}>Correo Electrónico:</span> {establecimiento.email}</p>
               </div>
-              {cardFooter}
+              <div className="botones-card">
+                <Link to="/anadirAct">
+                  <button className="round-button-card">Añadir Actividad</button>
+                </Link>
+                <Link to="/actividades">
+                  <button className="round-button-card" onClick={() => handleActividadesClick(establecimiento.id)}>Actividades</button>
+                </Link>
+                <Link to="/reservasEst">
+                  <button className="round-button-card">Reservas</button>
+                </Link>
+                <Link to="/editarEst">
+                  <button className="round-button-card">Editar</button>
+                </Link>
+              </div>
             </div>
           </div>
         ))}
