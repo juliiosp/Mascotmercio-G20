@@ -9,29 +9,28 @@ function EditarEst() {
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [direccion, setDireccion] = useState('');
-  
-  useEffect(() => {
-    const fetchId = async () => {
-      try {
-        const establecimientoId = localStorage.getItem('establecimientoId');
-        console.log('Establecimiento ID:', establecimientoId);
-        const response = await fetch(`https://localhost:8443/api/establecimientos/${establecimientoId}`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const establecimientoId = localStorage.getItem('establecimientoId'); // Obtener el ID del establecimiento
+          const response = await fetch(`https://localhost:8443/api/establecimientos/${establecimientoId}`);
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          setEstablecimientos(data);
+          setNombre(data.nombre);
+          setEmail(data.email);
+          setTelefono(data.telefono);
+          setDireccion(data.direccion);
+        } catch (error) {
+          console.error('Error fetching data:', error);
         }
-        const data = await response.json();
-        setEstablecimientos(data);
-        setNombre(data.nombre);
-        setEmail(data.email);
-        setTelefono(data.telefono);
-        setDireccion(data.direccion);
-      } catch (error) {
-        console.error('Error fetching ID:', error);
-      }
-    };
+      };
   
-    fetchId();
-  }, [localStorage.getItem('establecimientoId')]); // Escuchar los cambios en el establecimientoId almacenado en el localStorage
+    fetchData();
+  }, []); 
   
   const handleNombreChange = (e) => {
     setNombre(e.target.value);
@@ -52,9 +51,9 @@ function EditarEst() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const id = localStorage.getItem('establecimientoId'); // Cambiado a 'establecimientoId'
-      console.log('Establecimiento ID:', id); // Imprimir el valor de establecimientoId en la consola
-      const response = await fetch(`https://localhost:8443/api/establecimientos/${id}`, {
+      const establecimientoId = localStorage.getItem('establecimientoId'); // Obtener el ID del establecimiento
+      console.log('Establecimiento ID:', establecimientoId); // Imprimir el valor de establecimientoId en la consola
+      const response = await fetch(`https://localhost:8443/api/establecimientos/${establecimientoId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

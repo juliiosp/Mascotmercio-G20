@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useRevalidator } from 'react-router-dom';
 import './Reserva.css';
 
 const Reserva = () => {
   const [formData, setFormData] = useState({
-    nombre: '',
-    telefono: '',
-    direccion: '',
-    email: ''
+    fecha: '',
+    numpersonas: '',
+    nummascotas: '',
+    establecimientoId: '',
+    duenoMascotaId: ''
   });
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId'); // Obtener el ID del usuario del localStorage
+    console.log('UserID:', userId); // Imprimir el valor de userID en la consola
+    setFormData(prevFormData => ({ ...prevFormData, duenoMascotaId: userId })); // Asignar el ID del usuario al campo duenoEstablecimiento
+  }, []); // Ejecutar solo una vez al cargar el componente
+
+  useEffect(() => {
+    const establecimientoId = localStorage.getItem('establecimientoId'); // Obtener el ID del establecimiento
+    console.log('EstID:', establecimientoId); // Imprimir el valor de userID en la consola
+    setFormData(prevFormData => ({ ...prevFormData, establecimientoId: establecimientoId })); // Asignar el ID del usuario al campo duenoEstablecimiento
+  }, []); // Ejecutar solo una vez al cargar el componente
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,9 +64,10 @@ const Reserva = () => {
         </div>
         <div className="form-group">
           <label htmlFor="nummascotas">Nº de mascotas:</label>
-          <input type="text" id="nummascotas" name="nummascotas" value={formData.nmascotas} onChange={handleChange} required/>
+          <input type="text" id="nummascotas" name="nummascotas" value={formData.nummascotas} onChange={handleChange} required/>
         </div>
-        <input type="hidden" id="duenoMascota" name="duenoMascota" value={userId} onChange={handleChange} />
+        <input type="hidden" id="duenoMascotaId" name="duenoMascotaId" value={formData.duenoMascotaId} onChange={handleChange} required/>
+        <input type="hidden" id="EstablecimientoId" name="EstablecimientoId" value={formData.establecimientoId} onChange={handleChange} required/>
         <button type="submit">Reservar</button>
         <Link to="/duenoMascota">
           <button className="round-button">Volver</button>

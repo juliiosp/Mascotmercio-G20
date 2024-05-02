@@ -19,7 +19,7 @@ public class Reserva {
     private Date fecha;
     private int numpersonas;
     private int nummascotas;
-    private Long actividadId;
+    private Long establecimientoId;
     private Long duenoMascotaId;
 
     // @ManyToOne
@@ -34,13 +34,13 @@ public class Reserva {
 
     }
 
-    public Reserva(Long duenoMascotaId, Long actividadId, Long id, Date fecha, int numpersonas, int nummascotas) {
+    public Reserva(Long duenoMascotaId, Long establecimientoId, Long id, Date fecha, int numpersonas, int nummascotas) {
         this.id = id;
         this.fecha = fecha;
         this.numpersonas = numpersonas;
         this.nummascotas = nummascotas;
         this.duenoMascotaId = duenoMascotaId;
-        this.actividadId = actividadId;
+        this.establecimientoId = establecimientoId;
     }
 
     public long getId() {
@@ -75,14 +75,14 @@ public class Reserva {
         this.nummascotas = nummascotas;
     }
 
-    public Long getActividadId() {
-        return actividadId;
+    public Long getEstablecimientoId() {
+        return establecimientoId;
     }
 
-    public void setActividadId(Long actividadId) {
-        this.actividadId = actividadId;
+    public void setEstablecimientoId(Long establecimientoId) {
+        this.establecimientoId = establecimientoId;
     }
-
+    
     public Long getDuenoMascotaId() {
         return duenoMascotaId;
     }

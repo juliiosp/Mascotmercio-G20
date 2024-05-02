@@ -1,33 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Valorar.css';
 
 
-function Valorar() {
-  const [reseña, setReseña] = useState('');
-  const [calificacion, setCalificacion] = useState(0);
-  const [enviado, setEnviado] = useState(false);
+  const Valorar = () => {
+    const [enviado, setEnviado] = useState(false);
+    const [formData, setFormData] = useState({
+      reseña: '',
+      calificacion: '',
+      duenoMascotaId: '', // Agrega duenoMascota al estado inicial
+      establecimientoId: '', // Agrega establecimientoId al estado inicial
+    });
 
-  const handleReseñaChange = (event) => {
-    setReseña(event.target.value);
+  useEffect(() => {
+    const userId = localStorage.getItem('userId'); // Obtener el ID del usuario del localStorage
+    console.log('UserID:', userId); // Imprimir el valor de userID en la consola
+    setFormData(prevFormData => ({ ...prevFormData, duenoMascotaId: userId })); // Asignar el ID del usuario al campo duenoEstablecimiento
+  }, []); // Ejecutar solo una vez al cargar el componente
+
+  useEffect(() => {
+    const establecimientoId = localStorage.getItem('establecimientoId'); // Obtener el ID del establecimiento
+    console.log('EstID:', establecimientoId); // Imprimir el valor de userID en la consola
+    setFormData(prevFormData => ({ ...prevFormData, establecimientoId: establecimientoId })); // Asignar el ID del usuario al campo duenoEstablecimiento
+  }, []); // Ejecutar solo una vez al cargar el componente
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleCalificacionChange = (event) => {
-    setCalificacion(parseInt(event.target.value));
-  };
-
-  const handleSubmit = async () => {
-    const valoracionData = {
-      reseña: reseña,
-      calificacion: calificacion
-    };
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch('https://localhost:8443/api/valoraciones', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(valoracionData)
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
@@ -41,10 +49,6 @@ function Valorar() {
     }
   };
 
-  const handleEnviarClick = () => {
-    handleSubmit();
-  };
-
   if (enviado) {
     return <div>¡Gracias por tu valoración!</div>;
   }
@@ -52,15 +56,19 @@ function Valorar() {
   return (
     <div>
       <h2>Deja tu valoración:</h2>
+      <form className="valorar-formulario" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="reseña">Reseña:</label><br />
-        <textarea id="reseña" value={reseña} onChange={handleReseñaChange}></textarea>
+        <textarea id="reseña" name='reseña' value={formData.reseña} onChange={handleChange} required></textarea>
       </div>
       <div>
         <label htmlFor="calificacion">Calificación:</label><br />
-        <input type="number" id="calificacion" min="0" max="10" value={calificacion} onChange={handleCalificacionChange} />
+        <input type="number" id="calificacion" name='calificacion' min="0" max="10" value={formData.calificacion} onChange={handleChange} required/>
       </div>
-      <button className='round-button' onClick={handleEnviarClick}>Enviar</button>
+      <input type="hidden" id="duenoMascotaId" name="duenoMascotaId" value={formData.duenoMascotaId} onChange={handleChange} required/>
+      <input type="hidden" id="EstablecimientoId" name="EstablecimientoId" value={formData.establecimientoId} onChange={handleChange} required/>
+      <button type="submit" className='round-button'>Enviar</button>
+    </form>
     </div>
   );
 }

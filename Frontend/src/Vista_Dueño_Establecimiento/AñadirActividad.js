@@ -13,9 +13,9 @@ const AñadirActividad = () => {
 
   useEffect(() => {
     //USAR ID DE ESTABLECIMENTO SELECCIONADO
-    const id = localStorage.getItem('establecimientoSeleccionadoId');
-    console.log('UserID:', id); // Imprimir el valor de userID en la consola
-    setFormData(prevFormData => ({ ...prevFormData, establecimientoId: id })); // Asignar el ID del usuario al campo duenoEstablecimiento
+    const establecimientoId = localStorage.getItem('establecimientoId'); // Obtener el ID del establecimiento
+    console.log('EstablecimientoId:', establecimientoId); // Imprimir el valor de userID en la consola
+    setFormData(prevFormData => ({ ...prevFormData, establecimientoId: establecimientoId })); // Asignar el ID del usuario al campo duenoEstablecimiento
   }, []); // Ejecutar solo una vez al cargar el componente
 
   const handleChange = (e) => {
@@ -65,7 +65,7 @@ const AñadirActividad = () => {
           <label htmlFor="precio">Precio:</label>
           <input type="text" id="precio" name="precio" value={formData.precio} onChange={handleChange} required/>
         </div>
-        <input type="" id="establecimientoId" name="establecimientoId" value={formData.establecimientoId} onChange={handleChange} required/>
+        <input type="hidden" id="establecimientoId" name="establecimientoId" value={formData.establecimientoId} onChange={handleChange} required/>
         <button type="submit">Subir</button>
         <Link to="/duenoEstablecimiento">
           <button className="round-button">Volver</button>
