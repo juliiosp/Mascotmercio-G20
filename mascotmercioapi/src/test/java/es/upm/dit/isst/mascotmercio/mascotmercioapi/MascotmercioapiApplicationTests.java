@@ -3,8 +3,7 @@ package es.upm.dit.isst.mascotmercio.mascotmercioapi;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 import java.util.Date;
 import java.util.Optional;
@@ -21,7 +20,7 @@ import es.upm.dit.isst.mascotmercio.mascotmercioapi.models.Valoracion;
 import es.upm.dit.isst.mascotmercio.mascotmercioapi.models.Actividad;
 import es.upm.dit.isst.mascotmercio.mascotmercioapi.repository.DuenoEstablecimientoRepository;
 import es.upm.dit.isst.mascotmercio.mascotmercioapi.repository.DuenoMascotaRepository;
-import es.upm.dit.isst.mascotmercio.mascotmercioapi.repository.ActividadRepository;
+
 @SpringBootTest
 public class MascotmercioapiApplicationTests {
     @Autowired
