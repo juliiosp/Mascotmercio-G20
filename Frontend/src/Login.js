@@ -73,7 +73,6 @@ const Login = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Ingrese su correo electrónico"
           />
         </div>
         <div className="form-group">
@@ -84,7 +83,6 @@ const Login = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Ingrese su contraseña"
           />
         </div>
         {error && <p className="error-message">{error}</p>}
