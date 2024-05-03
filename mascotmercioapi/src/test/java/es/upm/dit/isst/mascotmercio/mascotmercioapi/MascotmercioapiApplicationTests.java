@@ -32,9 +32,9 @@ public class MascotmercioapiApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	    // DuenoEstablecimiento object can be created with valid input parameters
+	// DuenoEstablecimiento object can be created with valid input parameters
     @Test
-    public void test_createDuenoEstablecimiento_validInput() {
+    public void testCreateDuenoEstablecimiento() {
         DuenoEstablecimiento dueno = new DuenoEstablecimiento();
         dueno.setEmail("irene@ejemplo.com");
         dueno.setNombre("irene");
@@ -56,7 +56,7 @@ public class MascotmercioapiApplicationTests {
     }
 
     @Test
-    public void test_createDuenoMascota_validInput(){
+    public void testCreateDuenoMascota(){
         DuenoMascota duenoM = new DuenoMascota();
         duenoM.setEmail("maria@ejemplo.com");
         duenoM.setNombre("Maria");
@@ -79,33 +79,39 @@ public class MascotmercioapiApplicationTests {
     }
 
     // Create an instance of Actividad with valid parameters and verify that all attributes are correctly set
-        
-	@Test
-	public void test_create_instance_with_all_attributes() {
-		// Arrange
-		Long id = 1L;
-		String nombre = "Actividad 1";
-		String descripcion = "Descripción de la actividad";
-		java.util.Date disponibilidad = new java.util.Date(System.currentTimeMillis());
-		int precio = 100;
-		Long establecimientoId = 1L;
+    @Test  
+    public void testCreateActividad() {
+        // Arrange
+        Long id = 1L;
+        String nombre = "Actividad 1";
+        String descripcion = "Descripción de la actividad";
+        Date disponibilidad = new Date(System.currentTimeMillis());
+        int precio = 100;
+        Long establecimientoId = 1L;
 
-		// Act
-		Actividad actividad = new Actividad(id, nombre, descripcion, new java.sql.Date(disponibilidad.getTime()), precio, establecimientoId);
+        // Act
+        Actividad actividad = new Actividad(id, nombre, descripcion, new java.sql.Date(disponibilidad.getTime()), precio, establecimientoId);
 
-		// Assert
-		assertEquals(id, actividad.getId());
-		assertEquals(nombre, actividad.getNombre());
-		assertEquals(descripcion, actividad.getDescripcion());
-		assertEquals(new java.sql.Date(disponibilidad.getTime()), actividad.getDisponibilidad());
-		assertEquals(precio, actividad.getPrecio());
-		assertEquals(establecimientoId, actividad.getEstablecimientoId());
-	}
+        // Assert
+        assertEquals(id, actividad.getId());
+        assertEquals(nombre, actividad.getNombre());
+        assertEquals(descripcion, actividad.getDescripcion());
+        assertEquals(disponibilidad.getTime(), actividad.getDisponibilidad().getTime());
+        assertEquals(precio, actividad.getPrecio());
+        assertEquals(establecimientoId, actividad.getEstablecimientoId());
+    }
+
 
     // creating a new instance of Establecimiento with valid parameters should set the corresponding attributes correctly
     @Test
-    public void test_valid_parameters() {
-        Establecimiento establecimiento = new Establecimiento(1L, "Establecimiento 1", 1234567890, "Address 1", "email@example.com", 2L);
+    public void testCreateEstablecimiento() {
+        Establecimiento establecimiento = new Establecimiento();
+        establecimiento.setId(1L);
+        establecimiento.setNombre("Establecimiento 1");
+        establecimiento.setTelefono(1234567890);
+        establecimiento.setDireccion("Address 1");
+        establecimiento.setEmail("email@example.com");
+        establecimiento.setDuenoEstablecimientoId(2L);
     
         assertEquals(1L, establecimiento.getId());
         assertEquals("Establecimiento 1", establecimiento.getNombre());
@@ -114,12 +120,12 @@ public class MascotmercioapiApplicationTests {
         assertEquals("email@example.com", establecimiento.getEmail());
         assertEquals(2L, establecimiento.getDuenoEstablecimientoId());
     }
+    
 
 
 
-    // Reserva object can be created with valid parameters
     @Test
-    public void test_createReservaWithValidParameters() {
+    public void testCreateReserva() {
         // Arrange
         Long duenoMascotaId = 1L;
         Long actividadId = 2L;
@@ -128,23 +134,16 @@ public class MascotmercioapiApplicationTests {
         int numpersonas = 4;
         int nummascotas = 5;
 
-        // Change the act
-        Reserva reserva = new Reserva();
-
         // Act
-        reserva.setDuenoMascotaId(duenoMascotaId);
-        reserva.setActividadId(actividadId);
-        reserva.setId(id);
-        reserva.setFecha((java.sql.Date) fecha);
-        reserva.setNumpersonas(numpersonas);
-        reserva.setNummascotas(nummascotas);
+        Reserva reserva = new Reserva(duenoMascotaId, actividadId, id, new java.sql.Date(fecha.getTime()), numpersonas, nummascotas);
+
 
         // Assert
         assertNotNull(reserva);
         assertEquals(duenoMascotaId, reserva.getDuenoMascotaId());
         assertEquals(actividadId, reserva.getActividadId());
         assertEquals(id, reserva.getId());
-        assertEquals(fecha, reserva.getFecha());
+        assertEquals(fecha.getTime(), reserva.getFecha().getTime());
         assertEquals(numpersonas, reserva.getNumpersonas());
         assertEquals(nummascotas, reserva.getNummascotas());
     }
@@ -152,7 +151,7 @@ public class MascotmercioapiApplicationTests {
 
     // Create a Valoracion object with all fields set and verify that all fields are correctly set.
     @Test
-    public void test_create_valoracion_with_all_fields_set() {
+    public void testCreateValoracion() {
         // Arrange
         Long establecimientoId = 1L;
         Long duenoMascotaId = 2L;
@@ -163,7 +162,7 @@ public class MascotmercioapiApplicationTests {
         Date fecha = new Date(System.currentTimeMillis());
 
         // Act
-        Valoracion valoracion = new Valoracion(establecimientoId, duenoMascotaId, id, reseña, foto, calificacion, (java.sql.Date) fecha);
+        Valoracion valoracion = new Valoracion(establecimientoId, duenoMascotaId, id, reseña, foto, calificacion, new java.sql.Date(fecha.getTime()));
 
         // Assert
         assertEquals(establecimientoId, valoracion.getEstablecimientoId());
@@ -172,7 +171,7 @@ public class MascotmercioapiApplicationTests {
         assertEquals(reseña, valoracion.getReseña());
         assertEquals(foto, valoracion.getFoto());
         assertEquals(calificacion, valoracion.getCalificacion());
-        assertEquals(fecha, valoracion.getFecha());
+        assertEquals(fecha.getTime(), valoracion.getFecha().getTime());
     }
 
 }
