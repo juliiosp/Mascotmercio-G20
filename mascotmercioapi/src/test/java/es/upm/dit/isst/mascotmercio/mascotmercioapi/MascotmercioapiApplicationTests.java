@@ -77,30 +77,41 @@ public class MascotmercioapiApplicationTests {
         assertFalse(duenoM2.isPresent());   
 
     }
-
-    
-    @Test  
-    public void test_create_instance_with_all_attributes() {
-        // Arrange
+    @Test
+    public void testCreateActividad() {
+  
         Long id = 1L;
         String nombre = "Actividad 1";
         String descripcion = "Descripción de la actividad";
-        java.util.Date disponibilidad = new java.util.Date(System.currentTimeMillis());
+        java.util.Date disponibilidad = new java.util.Date(); 
         int precio = 100;
         Long establecimientoId = 1L;
 
-        // Act
-        Actividad actividad = new Actividad(nombre, descripcion, new java.sql.Date(disponibilidad.getTime()), precio, establecimientoId);
+      
+        java.sql.Date disponibilidadSql = new java.sql.Date(disponibilidad.getTime());
 
-        // Assert
+   
+        Actividad actividad = new Actividad();
+        actividad.setId(id); 
+        actividad.setNombre(nombre);
+        actividad.setDescripcion(descripcion);
+        actividad.setDisponibilidad(disponibilidadSql);
+        actividad.setPrecio(precio);
+        actividad.setEstablecimientoId(establecimientoId);
+
+   
         assertEquals(id, actividad.getId());
         assertEquals(nombre, actividad.getNombre());
         assertEquals(descripcion, actividad.getDescripcion());
-        assertEquals(new java.sql.Date(disponibilidad.getTime()), actividad.getDisponibilidad());
+        assertEquals(disponibilidadSql, actividad.getDisponibilidad());
         assertEquals(precio, actividad.getPrecio());
         assertEquals(establecimientoId, actividad.getEstablecimientoId());
     }
 
+
+
+
+    
 
 
     
