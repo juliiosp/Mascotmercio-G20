@@ -32,7 +32,7 @@ public class MascotmercioapiApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	// DuenoEstablecimiento object can be created with valid input parameters
+	
     @Test
     public void testCreateDuenoEstablecimiento() {
         DuenoEstablecimiento dueno = new DuenoEstablecimiento();
@@ -78,31 +78,32 @@ public class MascotmercioapiApplicationTests {
 
     }
 
-    // Create an instance of Actividad with valid parameters and verify that all attributes are correctly set
+    
     @Test  
-    public void testCreateActividad() {
+    public void test_create_instance_with_all_attributes() {
         // Arrange
         Long id = 1L;
         String nombre = "Actividad 1";
         String descripcion = "Descripción de la actividad";
-        Date disponibilidad = new Date(System.currentTimeMillis());
+        java.util.Date disponibilidad = new java.util.Date(System.currentTimeMillis());
         int precio = 100;
         Long establecimientoId = 1L;
 
         // Act
-        Actividad actividad = new Actividad(id, nombre, descripcion, new java.sql.Date(disponibilidad.getTime()), precio, establecimientoId);
+        Actividad actividad = new Actividad(nombre, descripcion, new java.sql.Date(disponibilidad.getTime()), precio, establecimientoId);
 
         // Assert
         assertEquals(id, actividad.getId());
         assertEquals(nombre, actividad.getNombre());
         assertEquals(descripcion, actividad.getDescripcion());
-        assertEquals(disponibilidad.getTime(), actividad.getDisponibilidad().getTime());
+        assertEquals(new java.sql.Date(disponibilidad.getTime()), actividad.getDisponibilidad());
         assertEquals(precio, actividad.getPrecio());
         assertEquals(establecimientoId, actividad.getEstablecimientoId());
     }
 
 
-    // creating a new instance of Establecimiento with valid parameters should set the corresponding attributes correctly
+
+    
     @Test
     public void testCreateEstablecimiento() {
         Establecimiento establecimiento = new Establecimiento();
@@ -126,33 +127,34 @@ public class MascotmercioapiApplicationTests {
 
     @Test
     public void testCreateReserva() {
-        // Arrange
+        
         Long duenoMascotaId = 1L;
-        Long actividadId = 2L;
+        Long establecimientoId = 2L;
         Long id = 3L;
-        Date fecha = new Date(System.currentTimeMillis());
+        java.sql.Date fecha = new java.sql.Date(System.currentTimeMillis()); // Cambiado a java.sql.Date
         int numpersonas = 4;
         int nummascotas = 5;
-
-        // Act
-        Reserva reserva = new Reserva(duenoMascotaId, actividadId, id, new java.sql.Date(fecha.getTime()), numpersonas, nummascotas);
-
-
-        // Assert
+    
+       
+        Reserva reserva = new Reserva(duenoMascotaId, establecimientoId, id, fecha, numpersonas, nummascotas); // Utilizando java.sql.Date
+    
+    
         assertNotNull(reserva);
         assertEquals(duenoMascotaId, reserva.getDuenoMascotaId());
-        assertEquals(actividadId, reserva.getActividadId());
+        assertEquals(establecimientoId, reserva.getEstablecimientoId());
         assertEquals(id, reserva.getId());
-        assertEquals(fecha.getTime(), reserva.getFecha().getTime());
+        assertEquals(fecha, reserva.getFecha()); // No se necesita getTime() para comparar con java.sql.Date
         assertEquals(numpersonas, reserva.getNumpersonas());
         assertEquals(nummascotas, reserva.getNummascotas());
     }
+    
 
 
-    // Create a Valoracion object with all fields set and verify that all fields are correctly set.
+
+    
     @Test
     public void testCreateValoracion() {
-        // Arrange
+       
         Long establecimientoId = 1L;
         Long duenoMascotaId = 2L;
         Long id = 3L;
@@ -161,10 +163,10 @@ public class MascotmercioapiApplicationTests {
         int calificacion = 5;
         Date fecha = new Date(System.currentTimeMillis());
 
-        // Act
+      
         Valoracion valoracion = new Valoracion(establecimientoId, duenoMascotaId, id, reseña, foto, calificacion, new java.sql.Date(fecha.getTime()));
 
-        // Assert
+       
         assertEquals(establecimientoId, valoracion.getEstablecimientoId());
         assertEquals(duenoMascotaId, valoracion.getDuenoMascotaId());
         assertEquals(id, valoracion.getId());
