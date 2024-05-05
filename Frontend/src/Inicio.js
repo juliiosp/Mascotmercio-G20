@@ -23,6 +23,9 @@ const Inicio = () => {
           <h1>Mascotmercio</h1>
           <h3>Pet-Friendly</h3>
           <p style={{ textAlign: 'center', margin: '0', fontSize:30 }}>¡Encuentra el lugar perfecto para ti y tu mascota!</p>
+          <p style={{ backgroundColor: 'black', color: 'white' }}>
+          Utilizamos cookies para mejorar su experiencia. Al continuar navegando, aceptas nuestra <Link to="/privacidad" style={{ color: 'white' }}>política de privacidad</Link>.
+          </p>
         </div>
       </div>
       <BotonesInicio />
