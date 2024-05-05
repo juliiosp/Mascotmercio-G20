@@ -24,6 +24,7 @@ import EditarPerfilEst from './Vista_Dueño_Establecimiento/EditarPerfilEst';
 import EditarPerfilMasc from './Vista_Dueño_Mascota/EditarPerfilMasc';
 import RegistroEstablecimiento from './RegistroEstablecimiento';
 import EditarEst from './Vista_Dueño_Establecimiento/EditarEst';
+import Privacidad from './Privacidad';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
 			  <Route path="/editarPerfilEst" element={<EditarPerfilEst />} />
 			  <Route path="/actividades" element={<Actividades />} />
 			  <Route path="/editarEst" element={<EditarEst />} />
+			  <Route path="/privacidad" element={<Privacidad />} />
 			  
 			</Routes>
 		  </div>
